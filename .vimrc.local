@@ -1,6 +1,0 @@
-colorscheme Tomorrow-Night-Eighties
-set splitbelow
-set splitright
-
-let g:indent_guides_enable_on_vim_startup = 0
-let g:airline_powerline_fonts = 1
