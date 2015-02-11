@@ -36,6 +36,7 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'jshint.vim'
 Plugin 'timcharper/textile.vim'
 Plugin 'fatih/vim-go'
+Plugin 'klen/python-mode'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
