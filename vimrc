@@ -66,6 +66,7 @@ Plug 'rking/ag.vim'
 Plug 'henrik/vim-reveal-in-finder'
 Plug 'justincampbell/vim-eighties'
 Plug 'myusuf3/numbers.vim'
+Plug 'Valloric/YouCompleteMe'
 
 "indent guides
 Plug 'nathanaelkane/vim-indent-guides'
