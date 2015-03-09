@@ -93,6 +93,12 @@ colorscheme Tomorrow-Night-Eighties
 set splitbelow
 set splitright
 
+" Indent-Guides
+autocmd VimEnter * :IndentGuidesEnable
+let g:indent_guides_auto_colors = 0
+highlight IndentGuidesEven ctermbg=233
+highlight IndentGuidesOdd ctermbg=black
+
 let g:vimfiler_as_default_explorer        = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent  = 3
