@@ -23,7 +23,7 @@ ZSH_THEME="agnoster"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -50,6 +50,8 @@ plugins=(brew bundler common-aliases git git-extras lol rvm tmux vagrant)
 # User configuration
 
 export PATH="/Users/matthew.morrissey/.rvm/gems/ruby-2.1.5/bin:/Users/matthew.morrissey/.rvm/gems/ruby-2.1.5@global/bin:/Users/matthew.morrissey/.rvm/rubies/ruby-2.1.5/bin:/usr/local/bin:.git/safe/../../bin:/Users/matthew.morrissey/.bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/matthew.morrissey/.rvm/bin"
+export GOPATH=$HOME/gocode
+export PATH=$PATH:$GOPATH/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -78,3 +80,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# eval "$(hub alias -s)"
+
+# Weirdly, the agnoster theme checks if the current user is the default user
+# and for some reason the default user is not set. Thus, we do that here.
+export DEFAULT_USER=matthew.morrissey
+export ATLAS_TOKEN=psz8JxiqY3yeWVyCyf5KPq61mosuA8ZuENDNqmkk5SyXvua7xTpUyB6uRud_XWvT1xo
+alias vim="/usr/local/bin/nvim"
+source /usr/local/bin/activate.sh

@@ -1,10 +1,8 @@
 # dotfiles
 Dotfiles to configure all the things
 
-vimrc requires Plug to run
+Assumes you're working on OSX but can easily be adapted for Linux.
 
-`curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
-
-YouCompleteMe requires vim version > 7.4.584
-In addition, there are additional installation steps required. See vimawesome
-for details.
+    git clone git@github.com:mattmizer/dotfiles.git ~/.dotfiles
+    cd ~/.dotfiles
+    ./install.sh
