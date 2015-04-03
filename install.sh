@@ -37,3 +37,6 @@ git config --global web.browser open
 mkdir -p ~/.vim/autoload
 curl -fLo ~/.vim/autoload/plug.vim \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# oh-my-zsh
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
