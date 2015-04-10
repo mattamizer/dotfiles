@@ -68,7 +68,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'valloric/youcompleteme', { 'do': './install.sh --clang-completer' }
+Plug 'valloric/youcompleteme'
 Plug 'vim-scripts/argtextobj.vim'
 
 "indent guides
@@ -137,11 +137,13 @@ set list
 set colorcolumn=81
 highlight! link ColorColumn CursorColumn
 
-let g:vimfiler_as_default_explorer        = 1
-let g:indent_guides_color_change_percent  = 3
-let g:indent_guides_start_level           = 2
-let g:indent_guides_guide_size            = 1
-let g:airline_powerline_fonts             = 1
+let g:airline_powerline_fonts                      = 1
+let g:indent_guides_color_change_percent           = 3
+let g:indent_guides_guide_size                     = 1
+let g:indent_guides_start_level                    = 2
+let g:vimfiler_as_default_explorer                 = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_key_invoke_completion                    = '<Tab>'
 
 let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl']
 
