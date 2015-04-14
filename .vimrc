@@ -92,6 +92,10 @@ set guioptions=egm
 set guifont=Menlo:h14
 set antialias
 
+" More sane window split resizing
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+
 colorscheme Tomorrow-Night-Eighties
 set splitbelow
 set splitright
@@ -126,7 +130,6 @@ set ignorecase
 set smartcase
 
 " Use relative line numbers, but show the absolute number on the current line
-set relativenumber
 set number
 
 " Show whitespace as unicode chars
