@@ -1,0 +1,39 @@
+# Unix
+alias tlf="tail -f"
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias ...='../..'
+alias l='ls'
+alias ll='ls -al'
+alias lh='ls -Alh'
+alias -g G='| grep'
+alias -g M='| less'
+alias -g L='| wc -l'
+alias -g ONE="| awk '{ print \$1}'"
+alias e="$EDITOR"
+alias v="$VISUAL"
+
+# git
+alias gci="git pull --rebase && rake && git push"
+alias ggrep="git grep --break --heading -n"
+
+# Bundler
+alias b="bundle"
+
+# Tests and Specs
+alias t="ruby -I test"
+alias cuc="bundle exec cucumber"
+
+# Rails
+alias be="bundle exec"
+alias rake="noglob rake"
+alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
+alias m="migrate"
+alias rk="rake"
+alias s="rspec"
+alias z="zeus"
+
+alias reload!='. ~/.zshrc'
+
+alias git='hub'
+alias gclean='git remote prune origin && git branch --merged master | egrep -v ''master|develop$'' | xargs git branch -d'
