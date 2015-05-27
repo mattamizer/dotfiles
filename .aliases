@@ -36,4 +36,4 @@ alias z="zeus"
 alias reload!='. ~/.zshrc'
 
 alias git='hub'
-alias gclean='git remote prune origin && git branch --merged master | egrep -v ''master|develop$'' | xargs git branch -d'
+alias gtidy='git remote prune origin && git branch --merged master | egrep -v "master|develop$" | xargs git branch -d'
