@@ -145,6 +145,8 @@ let g:indent_guides_color_change_percent = 3
 let g:indent_guides_guide_size           = 1
 let g:indent_guides_start_level          = 2
 let g:vimfiler_as_default_explorer       = 1
+let g:pymode_folding                     = 0
+let g:pymode_rope                        = 0
 
 let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl']
 
@@ -172,6 +174,17 @@ let g:rbpt_colorpairs = [
       \ ['red',         'firebrick3'],
       \ ]
 let g:rbpt_max = len(g:rbpt_colorpairs)
+
+""""""""""""""""""
+"""" Keywords """"
+""""""""""""""""""
+if has("autocmd")
+  " Highlight TODO, FIXME, NOTE, etc.
+  if v:version > 701
+    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
+    autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
+  endif
+endif
 
 """"""""""""""""""
 """ Whitespace """
@@ -229,6 +242,7 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
