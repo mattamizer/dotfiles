@@ -34,8 +34,7 @@ Plug 'timcharper/textile.vim'
 Plug 'tpope/vim-markdown'
 
 "  File exploration
-Plug 'shougo/unite.vim'
-Plug 'shougo/vimfiler'
+Plug 'scrooloose/nerdtree'
 
 Plug 'abolish.vim'
 Plug 'airblade/vim-gitgutter'
@@ -144,7 +143,6 @@ let g:airline_powerline_fonts            = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_guide_size           = 1
 let g:indent_guides_start_level          = 2
-let g:vimfiler_as_default_explorer       = 1
 let g:pymode_folding                     = 0
 let g:pymode_rope                        = 0
 
@@ -174,6 +172,15 @@ let g:rbpt_colorpairs = [
       \ ['red',         'firebrick3'],
       \ ]
 let g:rbpt_max = len(g:rbpt_colorpairs)
+
+""""""""""""""""
+""" NERDTree """
+""""""""""""""""
+
+let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
+
+nnoremap <leader>f :NERDTreeFind<enter>
+nnoremap <leader>n :NERDTreeToggle<enter>
 
 """"""""""""""""""
 """" Keywords """"
