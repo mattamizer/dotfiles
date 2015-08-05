@@ -86,6 +86,9 @@ Plug 'd11wtq/tomorrow-theme-vim'
 " All of your Plugs must be added before the following line
 call plug#end()
 
+" Remap leader to comma
+let mapleader=","
+
 set mouse=a
 set guioptions=egm
 set guifont=Menlo:h14
