@@ -4,6 +4,10 @@ if [ -a homebrew.sh ]; then
   ./homebrew.sh
 fi
 
+# Oh my zsh
+
+sh -c "$(curl -fsSl https://raw.github.com/robbyrussel/oh-my-zsh/master/tools/install.sh)"
+
 ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -fs ~/.dotfiles/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/.zshrc ~/.zshrc

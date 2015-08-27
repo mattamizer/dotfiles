@@ -87,7 +87,6 @@ source $ZSH/oh-my-zsh.sh
 export DEFAULT_USER=matthew.morrissey
 export ATLAS_TOKEN=psz8JxiqY3yeWVyCyf5KPq61mosuA8ZuENDNqmkk5SyXvua7xTpUyB6uRud_XWvT1xo
 alias vim="/usr/local/bin/nvim"
-source /usr/local/bin/activate.sh
 
 # Fuzzy finders
 branch() { git checkout ${1:-$(git branch | grep -v "^* "| pick)} ;}
