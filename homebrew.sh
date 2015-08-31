@@ -21,17 +21,11 @@ formulae=(
   git
   heroku-toolbelt
   hub
-  neovim
   pick
   python
-  nvm
-  q-queue
   reattach-to-user-namespace
-  rr
   ruby-install
-  tmux-status-bar
   tree
-  use
   watch
   wemux
   wget
