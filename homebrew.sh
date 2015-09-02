@@ -55,3 +55,6 @@ done
 for cask in "${casks[@]}"; do
   brew cask install $cask
 done
+
+# Move the system vim so we can use the upgraded version from brew
+sudo mv /usr/bin/vim /usr/bin/vim73
