@@ -26,6 +26,7 @@ formulae=(
   reattach-to-user-namespace
   ruby-install
   tree
+  vim --with-lua
   watch
   wemux
   wget
