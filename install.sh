@@ -8,7 +8,7 @@ fi
 
 sh -c "$(curl -fsSl https://raw.github.com/robbyrussel/oh-my-zsh/master/tools/install.sh)"
 
-ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
+ln -fs ~/.dotfiles/.tmux.config ~/.tmux.config
 ln -fs ~/.dotfiles/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/.zshrc ~/.zshrc
 ln -fs ~/.dotfiles/.zshrc.local ~/.zshrc.local
