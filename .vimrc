@@ -138,8 +138,8 @@ set number
 set listchars=tab:‣\ ,trail:\ ,extends:…,precedes:…,nbsp:˖
 set list
 
-" 80-column line
-set colorcolumn=81
+" 100-column line
+set colorcolumn=100
 highlight! link ColorColumn CursorColumn
 
 let g:airline_powerline_fonts            = 1
@@ -147,9 +147,13 @@ let g:indent_guides_color_change_percent = 3
 let g:indent_guides_guide_size           = 1
 let g:indent_guides_start_level          = 2
 let g:pymode_folding                     = 0
+let g:pymode_lint                        = 1
+let g:pymode_lint_on_write               = 1
 let g:pymode_rope                        = 0
+let g:pymode_virtualenv                  = 1
 
-let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl']
+let g:numbers_exclude    = ['tagbar', 'gundo', 'minibufexpl']
+let g:pymode_lint_ignore = "E501"
 
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
