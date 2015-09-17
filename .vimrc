@@ -153,7 +153,6 @@ let g:pymode_rope                        = 0
 let g:pymode_virtualenv                  = 1
 
 let g:numbers_exclude    = ['tagbar', 'gundo', 'minibufexpl']
-let g:pymode_lint_ignore = "E501"
 
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>

@@ -10,6 +10,7 @@ sh -c "$(curl -fsSl https://raw.github.com/robbyrussel/oh-my-zsh/master/tools/in
 
 ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -fs ~/.dotfiles/.vimrc ~/.vimrc
+ln -fs ~/.dotfiles/.pylintrc ~/.pylintrc
 ln -fs ~/.dotfiles/.zshrc ~/.zshrc
 ln -fs ~/.dotfiles/.zshrc.local ~/.zshrc.local
 ln -fs ~/.dotfiles/.zsh/ ~/.zsh/
