@@ -73,12 +73,9 @@ Plug 'vim-scripts/argtextobj.vim'
 "indent guides
 Plug 'nathanaelkane/vim-indent-guides'
 
-" SnipMate and dependencies
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-Plug 'marcweber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-
+" Neosnippet
+Plug 'shougo/neosnippet.vim'
+Plug 'shougo/neosnippet-snippets'
 " Colors
 Plug 'altercation/vim-colors-solarized'
 Plug 'd11wtq/tomorrow-theme-vim'
@@ -265,6 +262,19 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " AutoComplPop like behavior.
 let g:neocomplete#enable_auto_select = 1
+
+""""""""""""""""""
+""" Neosnippet """
+""""""""""""""""""
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
