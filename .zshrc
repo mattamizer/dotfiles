@@ -84,9 +84,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Weirdly, the agnoster theme checks if the current user is the default user
 # and for some reason the default user is not set. Thus, we do that here.
-export DEFAULT_USER=matthew.morrissey
+export DEFAULT_USER=mattm
 export ATLAS_TOKEN=psz8JxiqY3yeWVyCyf5KPq61mosuA8ZuENDNqmkk5SyXvua7xTpUyB6uRud_XWvT1xo
-alias vim="/usr/local/bin/nvim"
 
 # Fuzzy finders
 branch() { git checkout ${1:-$(git branch | grep -v "^* "| pick)} ;}
