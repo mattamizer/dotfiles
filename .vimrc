@@ -149,6 +149,8 @@ let g:pymode_lint_on_write               = 1
 let g:pymode_rope                        = 0
 let g:pymode_virtualenv                  = 1
 
+let g:pymode_lint_config = "$HOME/.pylintrc"
+
 let g:numbers_exclude    = ['tagbar', 'gundo', 'minibufexpl']
 
 nnoremap <F3> :NumbersToggle<CR>
