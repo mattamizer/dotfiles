@@ -21,6 +21,7 @@ formulae=(
   git
   heroku-toolbelt
   hub
+  jq
   pick
   python
   reattach-to-user-namespace
@@ -33,7 +34,6 @@ formulae=(
 )
 
 casks=(
-  1password
   arq
   dropbox
   flux
