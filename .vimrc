@@ -147,8 +147,10 @@ let g:pymode_folding                     = 0
 let g:pymode_lint                        = 1
 let g:pymode_lint_on_write               = 1
 let g:pymode_rope                        = 0
-let g:pymode_virtualenv                  = 1
+let g:pymode_virtualenv                  = 0
+let g:pymode_virtualenv_enabled          = 0
 
+let g:pymode_virtualenv_path = "$HOME/.venv"
 let g:pymode_lint_config = "$HOME/.pylintrc"
 
 let g:numbers_exclude    = ['tagbar', 'gundo', 'minibufexpl']
