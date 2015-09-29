@@ -19,6 +19,7 @@ ln -fs ~/.vim ~/.nvim
 ln -fs ~/.vimrc ~/.nvimrc
 
 mkdir -p ~/code
+mkdir -p ~/gocode/src/
 
 # git
 git config --global alias.amend 'commit --amend --reuse-message HEAD'
