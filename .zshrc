@@ -45,7 +45,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew bundler common-aliases git git-extras lol rvm tmux vagrant)
+plugins=(brew bundler colored-man-pages common-aliases git git-extras lol rvm tmux vagrant)
 
 # User configuration
 
@@ -55,6 +55,8 @@ export PATH=$PATH:$GOPATH/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
