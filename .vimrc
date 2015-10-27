@@ -18,8 +18,6 @@ Plug 'kchmck/vim-coffee-script'
 "   HTML
 Plug 'tudorprodan/html_annoyance.vim'
 Plug 'xenoterracide/html.vim'
-"   Python
-Plug 'klen/python-mode'
 "   Go
 Plug 'fatih/vim-go'
 "   Other
@@ -57,6 +55,7 @@ Plug 'mattn/gist-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'myusuf3/numbers.vim'
 Plug 'nicholaides/words-to-avoid.vim'
+Plug 'nvie/vim-flake8'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
@@ -143,15 +142,10 @@ let g:airline_powerline_fonts            = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_guide_size           = 1
 let g:indent_guides_start_level          = 2
-let g:pymode_folding                     = 0
-let g:pymode_lint                        = 1
-let g:pymode_lint_on_write               = 1
-let g:pymode_rope                        = 0
-let g:pymode_virtualenv                  = 0
-let g:pymode_virtualenv_enabled          = 0
+let g:flake8_show_in_gutter              = 1
 
-let g:pymode_virtualenv_path = "$HOME/.venv"
-let g:pymode_lint_config = "$HOME/.pylintrc"
+" Call flake8 every time we write a python file
+autocmd BufWritePost *.py call Flake8()
 
 let g:numbers_exclude    = ['tagbar', 'gundo', 'minibufexpl']
 
