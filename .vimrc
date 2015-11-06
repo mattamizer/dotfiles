@@ -109,6 +109,11 @@ set number
 
 set smartindent
 
+" Filetype specific settings
+autocmd FileType gitcommit,markdown set nonumber
+autocmd FileType gitcommit,markdown set spell
+autocmd FileType markdown,"" set wrap
+
 " Put temp files in the same spot
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
