@@ -4,6 +4,10 @@ if [ -a homebrew.sh ]; then
   ./homebrew.sh
 fi
 
+if [ -a prezto.sh ]; then
+  ./prezto.sh
+fi
+
 mkdir ~/.config
 mkdir ~/.zsh
 mkdir ~/.vim/backup
