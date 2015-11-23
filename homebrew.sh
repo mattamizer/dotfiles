@@ -35,9 +35,7 @@ formulae=(
 
 casks=(
   arq
-  dropbox
   flux
-  iterm2
   java
   nvalt
   skype
@@ -57,4 +55,4 @@ for cask in "${casks[@]}"; do
 done
 
 # Move the system vim so we can use the upgraded version from brew
-sudo mv /usr/bin/vim /usr/bin/vim73
+# sudo mv /usr/bin/vim /usr/bin/vim73
