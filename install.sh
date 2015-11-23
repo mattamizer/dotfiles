@@ -36,6 +36,8 @@ git config --global alias.ignore '!gitignoreio() { curl https://www.gitignore.io
 git config --global alias.yolo 'push --force --no-verify'
 git config --global alias.co 'checkout'
 git config --global alias.cob 'checkout -b'
+# Hub alias, but whatever
+git config --global alias.pr 'pull-request'
 git config --global color.ui true
 git config --global core.excludesfile ~/.gitignore
 git config --global github.user "mattamizer"
