@@ -66,7 +66,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'shougo/neocomplete.vim'
 Plug 'vim-scripts/argtextobj.vim'
 
 "indent guides

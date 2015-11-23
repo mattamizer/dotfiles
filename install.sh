@@ -4,13 +4,10 @@ if [ -a homebrew.sh ]; then
   ./homebrew.sh
 fi
 
-# Oh my zsh
-
-sh -c "$(curl -fsSl https://raw.github.com/robbyrussel/oh-my-zsh/master/tools/install.sh)"
-
 mkdir ~/.config
 mkdir ~/.zsh
 mkdir ~/.vim/backup
+ln -fs ~/.dotfiles/.aliases ~/.aliases
 ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -fs ~/.dotfiles/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/flake8 ~/.config/flake8
@@ -33,6 +30,8 @@ git config --global alias.edit '"!vim `git ls-files -m` -p"'
 git config --global alias.graph 'log --all --date=relative --decorate --graph --oneline'
 git config --global alias.ignore '!gitignoreio() { curl https://www.gitignore.io/api/$@ ;}; gitignoreio'
 git config --global alias.yolo 'push --force --no-verify'
+git config --global alias.co 'checkout'
+git config --global alias.cob 'checkout -b'
 git config --global color.ui true
 git config --global core.excludesfile ~/.gitignore
 git config --global github.user "mattamizer"
