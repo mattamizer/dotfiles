@@ -11,6 +11,7 @@ fi
 mkdir ~/.config
 mkdir ~/.zsh
 mkdir ~/.vim/backup
+ln -fs ~/.dotfiles/.agignore ~/.agignore
 ln -fs ~/.dotfiles/.aliases ~/.aliases
 ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -fs ~/.dotfiles/.vimrc ~/.vimrc

@@ -1,0 +1,8 @@
+_build
+coverage
+doc
+log
+node_modules
+pkg
+tmp
+vendor
