@@ -21,12 +21,12 @@ Plug 'xenoterracide/html.vim'
 "   Go
 Plug 'fatih/vim-go'
 "   Other
-Plug 'avakhov/vim-yaml'
 Plug 'digitaltoad/vim-jade'
 Plug 'jshint.vim'
 Plug 'juvenn/mustache.vim'
 Plug 'nono/vim-handlebars'
 Plug 'slim-template/vim-slim'
+Plug 'stephpy/vim-yaml'
 Plug 'timcharper/textile.vim'
 Plug 'tpope/vim-markdown'
 
