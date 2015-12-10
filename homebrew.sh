@@ -9,6 +9,7 @@ if ! brew doctor; then
 fi
 
 brew tap homebrew/binary
+brew tap justincampbell/formulae
 brew tap neovim/homebrew-neovim
 brew tap thoughtbot/formulae
 
@@ -18,6 +19,7 @@ formulae=(
   caskroom/cask/brew-cask
   chruby
   cloc
+  emoji-weather
   git
   heroku-toolbelt
   hub
@@ -26,6 +28,7 @@ formulae=(
   python
   reattach-to-user-namespace
   ruby-install
+  tmux-pomodoro
   tree
   vim --with-lua
   watch
