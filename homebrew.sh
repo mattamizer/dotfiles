@@ -24,13 +24,13 @@ formulae=(
   heroku-toolbelt
   hub
   jq
+  neovim
   pick
   python
   reattach-to-user-namespace
   ruby-install
   tmux-pomodoro
   tree
-  vim --with-lua
   watch
   wemux
   wget
