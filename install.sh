@@ -16,6 +16,7 @@ ln -fs ~/.dotfiles/.aliases ~/.aliases
 ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -fs ~/.dotfiles/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/flake8 ~/.config/flake8
+ln -fs ~/.dotfiles/.zshenv ~/.zshenv
 ln -fs ~/.dotfiles/.zshrc ~/.zshrc
 ln -fs ~/.dotfiles/.zshrc.local ~/.zshrc.local
 ln -fs ~/.dotfiles/.zsh/ ~/.zsh/

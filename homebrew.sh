@@ -30,6 +30,7 @@ formulae=(
   reattach-to-user-namespace
   ruby-install
   tmux-pomodoro
+  tmux-status-bar
   tree
   watch
   wemux
