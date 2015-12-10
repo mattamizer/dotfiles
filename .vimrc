@@ -84,6 +84,9 @@ call plug#end()
 " Remap leader to comma
 let mapleader=","
 
+" :W to sudo save
+command W w !sudo tee % > /dev/null
+
 set mouse=a
 set guioptions=egm
 set guifont=Menlo:h14
