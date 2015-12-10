@@ -20,8 +20,9 @@ ln -fs ~/.dotfiles/.zshrc ~/.zshrc
 ln -fs ~/.dotfiles/.zshrc.local ~/.zshrc.local
 ln -fs ~/.dotfiles/.zsh/ ~/.zsh/
 
-ln -fs ~/.vim ~/.nvim
-ln -fs ~/.vimrc ~/.nvimrc
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
 mkdir -p ~/code
 mkdir -p ~/gocode/src/

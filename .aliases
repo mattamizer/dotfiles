@@ -17,6 +17,9 @@ alias v="$VISUAL"
 alias gci="git pull --rebase && rake && git push"
 alias ggrep="git grep --break --heading -n"
 
+# Neovim
+alias vim="nvim"
+
 # Bundler
 alias b="bundle"
 
