@@ -23,7 +23,7 @@ gocode() {
   cd $GOPATH/src/${1:-$(
   find $GOPATH/src -type d -maxdepth 3 | \
     grep "src/.*/.*/.*$" | \
-    cut -f 7-9 -d "/" | \
+    cut -f 6-9 -d "/" | \
     pick
   )}
 }
