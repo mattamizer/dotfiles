@@ -19,7 +19,6 @@ formulae=(
   caskroom/cask/brew-cask
   chruby
   cloc
-  emoji-weather
   git
   heroku-toolbelt
   hub
