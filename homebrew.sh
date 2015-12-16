@@ -11,12 +11,14 @@ fi
 brew tap homebrew/binary
 brew tap justincampbell/formulae
 brew tap neovim/homebrew-neovim
+brew tap nviennot/tmate
 brew tap thoughtbot/formulae
 
 formulae=(
   ag
   boot2docker
   caskroom/cask/brew-cask
+  cacheout
   chruby
   cloc
   git
@@ -28,7 +30,7 @@ formulae=(
   python
   reattach-to-user-namespace
   ruby-install
-  tmux-pomodoro
+  tmate
   tmux-status-bar
   tree
   watch
@@ -56,6 +58,3 @@ done
 for cask in "${casks[@]}"; do
   brew cask install $cask
 done
-
-# Move the system vim so we can use the upgraded version from brew
-# sudo mv /usr/bin/vim /usr/bin/vim73
