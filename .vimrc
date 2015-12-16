@@ -110,6 +110,7 @@ set expandtab
 set number
 
 set smartindent
+set lazyredraw
 
 " Filetype specific settings
 autocmd FileType gitcommit,markdown set nonumber
