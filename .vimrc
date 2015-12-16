@@ -24,8 +24,6 @@ Plug 'fatih/vim-go'
 "   Other
 Plug 'digitaltoad/vim-jade'
 Plug 'jshint.vim'
-Plug 'juvenn/mustache.vim'
-Plug 'nono/vim-handlebars'
 Plug 'slim-template/vim-slim'
 Plug 'stephpy/vim-yaml'
 Plug 'timcharper/textile.vim'
@@ -152,7 +150,6 @@ let g:indent_guides_color_change_percent = 3
 let g:indent_guides_guide_size           = 1
 let g:indent_guides_start_level          = 2
 let g:flake8_show_in_gutter              = 1
-let g:mustache_abbreviations             = 1
 
 " Call flake8 every time we write a python file
 autocmd BufWritePost *.py call Flake8()
