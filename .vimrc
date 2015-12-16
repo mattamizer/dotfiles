@@ -15,6 +15,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'itspriddle/vim-jquery'
 Plug 'jiangmiao/simple-javascript-indenter'
 Plug 'kchmck/vim-coffee-script'
+Plug 'mustache/vim-mustache-handlebars'
 "   HTML
 Plug 'tudorprodan/html_annoyance.vim'
 Plug 'xenoterracide/html.vim'
@@ -151,6 +152,7 @@ let g:indent_guides_color_change_percent = 3
 let g:indent_guides_guide_size           = 1
 let g:indent_guides_start_level          = 2
 let g:flake8_show_in_gutter              = 1
+let g:mustache_abbreviations             = 1
 
 " Call flake8 every time we write a python file
 autocmd BufWritePost *.py call Flake8()
