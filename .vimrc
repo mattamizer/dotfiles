@@ -32,7 +32,7 @@ Plug 'tpope/vim-markdown'
 "  File exploration
 Plug 'scrooloose/nerdtree'
 
-Plug 'abolish.vim'
+Plug 'tpope/vim-abolish'
 Plug 'airblade/vim-gitgutter'
 Plug 'align'
 Plug 'bling/vim-airline'
@@ -180,6 +180,11 @@ let g:rbpt_colorpairs = [
       \ ['red',         'firebrick3'],
       \ ]
 let g:rbpt_max = len(g:rbpt_colorpairs)
+
+" Filetype mappings
+autocmd BufNewFile,BufRead *.hjson set filetype=json
+autocmd BufNewFile,BufRead *.skim set filetype=slim
+autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
 
 """"""""""""""""
 """ NERDTree """
