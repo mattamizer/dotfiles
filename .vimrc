@@ -212,7 +212,7 @@ endif
 """"""""""""""""""
 
 " Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | :call <SID>StripTrailingWhitespaces() | endif
+" autocmd BufRead,BufWrite * if ! &bin | :call <SID>StripTrailingWhitespaces() | endif
 
 " Use handlebars syntax highlighting for dataviews
 au BufRead,BufNewFile *.dataview setf handlebars
