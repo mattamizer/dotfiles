@@ -44,7 +44,6 @@ Plug 'godlygeek/tabular'
 Plug 'henrik/vim-reveal-in-finder'
 Plug 'ivyl/vim-bling'
 Plug 'jgdavey/vim-blockle'
-Plug 'justincampbell/vim-eighties'
 Plug 'kana/vim-textobj-user'
 Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
@@ -77,6 +76,8 @@ Plug 'shougo/neosnippet-snippets'
 " Colors
 Plug 'altercation/vim-colors-solarized'
 Plug 'd11wtq/tomorrow-theme-vim'
+Plug 'mhinz/vim-janah'
+Plug 'justincampbell/vim-eighties'
 
 " All of your Plugs must be added before the following line
 call plug#end()
@@ -96,7 +97,9 @@ set antialias
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
-colorscheme Tomorrow-Night-Eighties
+" colorscheme Tomorrow-Night-Eighties
+autocmd ColorScheme janah highlight Normal ctermbg=235
+colorscheme janah
 set splitbelow
 set splitright
 
