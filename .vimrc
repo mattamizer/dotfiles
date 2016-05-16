@@ -83,15 +83,16 @@ Plug 'justincampbell/vim-eighties'
 call plug#end()
 
 " Remap leader to comma
-let mapleader=","
+let mapleader="\<Space>"
 
+" Clear highlight on esc
+nnoremap <esc> :noh<cr><esc>
 " :W to sudo save
 command W w !sudo tee % > /dev/null
 
 set mouse=a
 set guioptions=egm
 set guifont=Menlo:h14
-set antialias
 
 " More sane window split resizing
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
