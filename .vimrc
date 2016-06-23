@@ -190,6 +190,7 @@ let g:rbpt_max = len(g:rbpt_colorpairs)
 autocmd BufNewFile,BufRead *.hjson set filetype=json
 autocmd BufNewFile,BufRead *.skim set filetype=slim
 autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
+autocmd BufNewFile,BufRead Dockerfile.* set filetype=dockerfile
 
 """"""""""""""""
 """ NERDTree """
