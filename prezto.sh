@@ -4,7 +4,7 @@
 zsh
 
 # Clone prezto
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+git clone --recursive https://github.com/mattamizer/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 # Install
 setopt EXTENDED_GLOB
