@@ -57,6 +57,7 @@ Plug 'nvie/vim-flake8'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
+Plug 'shougo/deoplete.nvim'
 Plug 'speeddating.vim'
 Plug 'switch.vim'
 Plug 'tomtom/tcomment_vim'
@@ -163,6 +164,9 @@ let g:numbers_exclude    = ['tagbar', 'gundo', 'minibufexpl']
 
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 " rainbow_parentheses.vim
 autocmd VimEnter * RainbowParenthesesToggle
