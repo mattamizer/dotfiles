@@ -51,6 +51,8 @@ git config --global push.default current
 git config --global user.email "mattamizer@gmail.com"
 git config --global user.name "Matthew Morrissey"
 git config --global web.browser open
+git config --global commit.gpgsign True
+git config --global user.signingkey 0xB940B2D47B837909
 
 # vim-plug
 mkdir -p ~/.vim/autoload
