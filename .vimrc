@@ -1,4 +1,6 @@
 call plug#begin('~/.vim/plugged')
+" If I'm neovim, load sane defaults
+if !has('nvim') | Plug 'noahfrederick/vim-neovim-defaults' | end
 
 " Define bundles via Github repos
 Plug 'sensible.vim'
@@ -91,7 +93,6 @@ nnoremap <esc> :noh<cr><esc>
 " :W to sudo save
 command W w !sudo tee % > /dev/null
 
-set mouse=a
 set guioptions=egm
 set guifont=Menlo:h14
 
