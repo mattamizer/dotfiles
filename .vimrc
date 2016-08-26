@@ -7,6 +7,8 @@ Plug 'sensible.vim'
 Plug 'vim-scripts/pbcopy.vim'
 
 " Languages
+"   Salt
+Plug 'saltstack/salt-vim'
 "   Ruby
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'nelstrom/vim-textobj-rubyblock'
