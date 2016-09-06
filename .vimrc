@@ -226,9 +226,6 @@ endif
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | :call <SID>StripTrailingWhitespaces() | endif
 
-" Use handlebars syntax highlighting for dataviews
-au BufRead,BufNewFile *.dataview setf handlebars
-
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
     let _s=@/
