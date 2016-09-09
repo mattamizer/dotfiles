@@ -16,10 +16,6 @@ ln -fs ~/.dotfiles/.aliases ~/.aliases
 ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -fs ~/.dotfiles/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/flake8 ~/.config/flake8
-ln -fs ~/.dotfiles/.zshenv ~/.zshenv
-ln -fs ~/.dotfiles/.zshrc ~/.zshrc
-ln -fs ~/.dotfiles/.zshrc.local ~/.zshrc.local
-ln -fs ~/.dotfiles/.zsh/ ~/.zsh/
 
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
@@ -51,8 +47,6 @@ git config --global push.default current
 git config --global user.email "mattamizer@gmail.com"
 git config --global user.name "Matthew Morrissey"
 git config --global web.browser open
-git config --global commit.gpgsign True
-git config --global user.signingkey 0xB940B2D47B837909
 
 # vim-plug
 mkdir -p ~/.vim/autoload
