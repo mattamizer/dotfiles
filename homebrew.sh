@@ -15,7 +15,6 @@ brew tap thoughtbot/formulae
 
 formulae=(
   ag
-  caskroom/cask/brew-cask
   chruby
   cloc
   git
@@ -42,8 +41,6 @@ casks=(
   vagrant
   virtualbox
 )
-
-brew tap | grep "cask" > /dev/null || brew tap phinze/homebrew-cask
 
 for formula in "${formulae[@]}"; do
   brew install $formula || brew upgrade $formula
