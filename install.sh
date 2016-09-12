@@ -47,6 +47,7 @@ git config --global push.default current
 git config --global user.email "mattamizer@gmail.com"
 git config --global user.name "Matthew Morrissey"
 git config --global web.browser open
+git config --global credential.helper osxkeychain
 
 # vim-plug
 mkdir -p ~/.vim/autoload
