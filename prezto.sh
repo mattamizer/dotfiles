@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Switch to ZSH
-zsh
-
 # Clone prezto
 git clone --recursive https://github.com/mattamizer/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
