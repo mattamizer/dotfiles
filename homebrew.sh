@@ -24,6 +24,7 @@ formulae=(
   neovim
   pick
   python
+  python3
   reattach-to-user-namespace
   ruby-install
   tmate
