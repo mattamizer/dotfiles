@@ -15,7 +15,6 @@ brew tap thoughtbot/formulae
 
 formulae=(
   ag
-  boot2docker
   caskroom/cask/brew-cask
   cacheout
   chruby
@@ -42,8 +41,6 @@ casks=(
   flux
   java
   nvalt
-  skype
-  slate
   vagrant
   virtualbox
 )
