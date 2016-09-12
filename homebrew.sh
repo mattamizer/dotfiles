@@ -33,19 +33,6 @@ formulae=(
   wget
 )
 
-casks=(
-  arq
-  flux
-  java
-  nvalt
-  vagrant
-  virtualbox
-)
-
 for formula in "${formulae[@]}"; do
   brew install $formula || brew upgrade $formula
-done
-
-for cask in "${casks[@]}"; do
-  brew cask install $cask
 done
