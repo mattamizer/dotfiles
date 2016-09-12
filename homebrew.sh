@@ -28,7 +28,7 @@ formulae=(
   reattach-to-user-namespace
   ruby-install
   tmate
-  tmux-status-bar
+  terminal-status-bar
   tree
   watch
   wemux
