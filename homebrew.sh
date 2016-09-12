@@ -16,7 +16,6 @@ brew tap thoughtbot/formulae
 formulae=(
   ag
   caskroom/cask/brew-cask
-  cacheout
   chruby
   cloc
   git
