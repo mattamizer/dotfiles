@@ -8,9 +8,9 @@ if [ -a prezto.sh ]; then
   ./prezto.sh
 fi
 
-mkdir ~/.config
-mkdir ~/.zsh
-mkdir ~/.vim/backup
+mkdir -p ~/.config
+mkdir -p ~/.zsh
+mkdir -p ~/.vim/backup
 ln -fs ~/.dotfiles/.agignore ~/.agignore
 ln -fs ~/.dotfiles/.aliases ~/.aliases
 ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
