@@ -42,8 +42,4 @@ alias reload!='. ~/.zshrc'
 alias git='hub'
 alias gtidy='git remote prune origin && git branch --merged develop | egrep -v "master|develop$" | xargs git branch -d'
 
-custom_launch () {
-  workon customserver
-  git pull && printf $1 | xargs -I {} sh -c 'fab ec2:{} remote.launch_base && fab ec2:{} remote.launch_custom'
-}
-alias customlaunch=custom_launch
+alias angora="${HOME}/.virtualenv/angora/bin/angora"
