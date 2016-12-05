@@ -17,6 +17,7 @@ formulae=(
   ag
   chruby
   cloc
+  flake8
   git
   heroku-toolbelt
   hub
@@ -27,6 +28,7 @@ formulae=(
   python3
   reattach-to-user-namespace
   ruby-install
+  slackcat
   tmate
   tree
   watch

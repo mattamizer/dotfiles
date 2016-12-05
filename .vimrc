@@ -48,8 +48,9 @@ Plug 'godlygeek/tabular'
 Plug 'henrik/vim-reveal-in-finder'
 Plug 'ivyl/vim-bling'
 Plug 'jgdavey/vim-blockle'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-textobj-user'
-Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'lokaltog/vim-easymotion'
 Plug 'matchit.zip'
@@ -58,7 +59,6 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'myusuf3/numbers.vim'
 Plug 'nicholaides/words-to-avoid.vim'
 Plug 'nvie/vim-flake8'
-Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
 Plug 'shougo/deoplete.nvim'
@@ -81,8 +81,8 @@ Plug 'shougo/neosnippet-snippets'
 " Colors
 Plug 'altercation/vim-colors-solarized'
 Plug 'd11wtq/tomorrow-theme-vim'
-Plug 'mhinz/vim-janah'
 Plug 'justincampbell/vim-eighties'
+Plug 'mhinz/vim-janah'
 
 " All of your Plugs must be added before the following line
 call plug#end()
@@ -95,6 +95,7 @@ nnoremap <esc> :noh<cr><esc>
 " :W to sudo save
 command W w !sudo tee % > /dev/null
 
+set grepprg=rg\ --vimgrep
 set guioptions=egm
 set guifont=Menlo:h14
 
@@ -102,9 +103,11 @@ set guifont=Menlo:h14
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
+" Color options
 " colorscheme Tomorrow-Night-Eighties
 autocmd ColorScheme janah highlight Normal ctermbg=235
 colorscheme janah
+
 set splitbelow
 set splitright
 
@@ -150,8 +153,8 @@ set number
 set listchars=tab:‣\ ,trail:\ ,extends:…,precedes:…,nbsp:˖
 set list
 
-" 100-column line
-set colorcolumn=100
+" 80-column line
+set colorcolumn=120
 highlight! link ColorColumn CursorColumn
 
 let g:airline_powerline_fonts            = 1
@@ -204,8 +207,6 @@ autocmd BufNewFile,BufRead Dockerfile.* set filetype=dockerfile
 """"""""""""""""
 
 let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
-
-nnoremap <leader>f :NERDTreeFind<enter>
 nnoremap <leader>n :NERDTreeToggle<enter>
 
 """"""""""""""""""
@@ -238,21 +239,11 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-""""""""""""""
-""" CTRL P """
-""""""""""""""
-
-let g:ctrlp_custom_ignore = '\.git$\|tmp$\|\.bundle$\|public/uploads$\|public/system$\|public\/topics$\|public/user_profiles\|\.sass-cache$|node_modules$'
-
-
-" Use The SilverSearcher to find files. It means we no longer need to cache.
-let g:ag_binary = system("which ag | xargs echo -n")
-if filereadable(g:ag_binary)
-  let g:ctrlp_user_command = g:ag_binary . ' %s -l --nocolor -g ""'
-endif
-
-let g:ctrlp_use_caching = 0
-
+""""""""""""""""""
+"""" FZF + RG """"
+""""""""""""""""""
+nnoremap <leader>f :Files<enter>
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 """"""""""""""""""
 """ Neosnippet """
