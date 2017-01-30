@@ -1,14 +1,9 @@
 call plug#begin('~/.vim/plugged')
 " If I'm neovim, load sane defaults
 if !has('nvim') | Plug 'noahfrederick/vim-neovim-defaults' | end
-
-" Define bundles via Github repos
-Plug 'sensible.vim'
-Plug 'vim-scripts/pbcopy.vim'
+if !has('nvim') | Plug 'sensible.vim' | end
 
 " Languages
-"   Salt
-Plug 'saltstack/salt-vim'
 "   Ruby
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'nelstrom/vim-textobj-rubyblock'
@@ -31,7 +26,6 @@ Plug 'jshint.vim'
 Plug 'slim-template/vim-slim'
 Plug 'stephpy/vim-yaml'
 Plug 'timcharper/textile.vim'
-Plug 'tpope/vim-markdown'
 
 "  File exploration
 Plug 'scrooloose/nerdtree'
@@ -58,7 +52,6 @@ Plug 'mattn/gist-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'myusuf3/numbers.vim'
 Plug 'nicholaides/words-to-avoid.vim'
-Plug 'nvie/vim-flake8'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
 Plug 'shougo/deoplete.nvim'
@@ -86,6 +79,10 @@ Plug 'mhinz/vim-janah'
 
 " All of your Plugs must be added before the following line
 call plug#end()
+
+" Python support
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Remap leader to comma
 let mapleader="\<Space>"
@@ -161,10 +158,6 @@ let g:airline_powerline_fonts            = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_guide_size           = 1
 let g:indent_guides_start_level          = 2
-let g:flake8_show_in_gutter              = 1
-
-" Call flake8 every time we write a python file
-autocmd BufWritePost *.py call Flake8()
 
 let g:numbers_exclude    = ['tagbar', 'gundo', 'minibufexpl']
 
@@ -201,6 +194,19 @@ autocmd BufNewFile,BufRead *.hjson set filetype=json
 autocmd BufNewFile,BufRead *.skim set filetype=slim
 autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
 autocmd BufNewFile,BufRead Dockerfile.* set filetype=dockerfile
+"""""""""""""""
+"" syntastic ""
+"""""""""""""""
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
 
 """"""""""""""""
 """ NERDTree """
