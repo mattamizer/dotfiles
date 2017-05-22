@@ -17,6 +17,7 @@ formulae=(
   ag
   chruby
   cloc
+  ctags
   flake8
   git
   heroku-toolbelt

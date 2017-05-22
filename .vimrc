@@ -22,7 +22,6 @@ Plug 'xenoterracide/html.vim'
 Plug 'fatih/vim-go'
 "   Other
 Plug 'digitaltoad/vim-jade'
-Plug 'jshint.vim'
 Plug 'slim-template/vim-slim'
 Plug 'stephpy/vim-yaml'
 Plug 'timcharper/textile.vim'
@@ -32,7 +31,6 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'tpope/vim-abolish'
 Plug 'airblade/vim-gitgutter'
-Plug 'align'
 Plug 'bling/vim-airline'
 Plug 'bogado/file-line'
 Plug 'danro/rename.vim'
@@ -47,16 +45,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'lokaltog/vim-easymotion'
-Plug 'matchit.zip'
 Plug 'mattn/gist-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'myusuf3/numbers.vim'
 Plug 'nicholaides/words-to-avoid.vim'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'sjl/gundo.vim'
 Plug 'shougo/deoplete.nvim'
-Plug 'speeddating.vim'
-Plug 'switch.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-endwise'
@@ -195,18 +190,16 @@ autocmd BufNewFile,BufRead *.skim set filetype=slim
 autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
 autocmd BufNewFile,BufRead Dockerfile.* set filetype=dockerfile
 """""""""""""""
-"" syntastic ""
+""""" ALE """""
 """""""""""""""
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
+" Use the quickfix window, not the location window
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+" Open the window when there are errors
+let g:ale_open_list = 1
+" Only save on write, otherwise the cursor jumping fucks with my chi
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
 
 """"""""""""""""
 """ NERDTree """
