@@ -20,6 +20,7 @@ alias ggrep="git grep --break --heading -n"
 # Neovim
 alias vi="nvim"
 alias vim="nvim"
+alias vimdiff="nvim -d"
 
 # Bundler
 alias b="bundle"
