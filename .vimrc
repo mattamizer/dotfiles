@@ -6,7 +6,6 @@ if !has('nvim') | Plug 'sensible.vim' | end
 " Languages
 "   Ruby
 Plug 'ecomba/vim-ruby-refactoring'
-Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
@@ -25,6 +24,7 @@ Plug 'digitaltoad/vim-jade'
 Plug 'slim-template/vim-slim'
 Plug 'stephpy/vim-yaml'
 Plug 'timcharper/textile.vim'
+Plug 'elzr/vim-json'
 
 "  File exploration
 Plug 'scrooloose/nerdtree'
@@ -32,33 +32,24 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-abolish'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-Plug 'bogado/file-line'
-Plug 'danro/rename.vim'
-Plug 'dockyard/vim-easydir'
-Plug 'elzr/vim-json'
 Plug 'godlygeek/tabular'
-Plug 'henrik/vim-reveal-in-finder'
-Plug 'ivyl/vim-bling'
 Plug 'jgdavey/vim-blockle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'kana/vim-textobj-user'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'lokaltog/vim-easymotion'
 Plug 'mattn/gist-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'myusuf3/numbers.vim'
-Plug 'nicholaides/words-to-avoid.vim'
 Plug 'w0rp/ale'
 Plug 'sjl/gundo.vim'
-Plug 'shougo/deoplete.nvim'
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 Plug 'tomtom/tcomment_vim'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/argtextobj.vim'
 
 "indent guides
 Plug 'nathanaelkane/vim-indent-guides'
@@ -82,14 +73,15 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 " Remap leader to comma
 let mapleader="\<Space>"
 
+" JEDI auto close preview after completion
+let g:jedi#auto_close_doc = 0
+
 " Clear highlight on esc
 nnoremap <esc> :noh<cr><esc>
 " :W to sudo save
 command W w !sudo tee % > /dev/null
 
 set grepprg=rg\ --vimgrep
-set guioptions=egm
-set guifont=Menlo:h14
 
 " More sane window split resizing
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -108,10 +100,6 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=4
 set expandtab
-
-" Fix numbers.vim bug with Vim 7.4+
-set number
-
 set smartindent
 set lazyredraw
 
@@ -145,7 +133,7 @@ set number
 set listchars=tab:‣\ ,trail:\ ,extends:…,precedes:…,nbsp:˖
 set list
 
-" 80-column line
+" 120-column line
 set colorcolumn=120
 highlight! link ColorColumn CursorColumn
 
