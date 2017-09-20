@@ -73,9 +73,6 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 " Remap leader to comma
 let mapleader="\<Space>"
 
-" JEDI auto close preview after completion
-let g:jedi#auto_close_doc = 0
-
 " Clear highlight on esc
 nnoremap <esc> :noh<cr><esc>
 " :W to sudo save
