@@ -55,3 +55,5 @@ mkdir -p ~/.vim/autoload
 curl -fLo ~/.vim/autoload/plug.vim \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugClean +PlugInstall +qa
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
