@@ -43,4 +43,4 @@ alias reload!='. ~/.zshrc'
 alias git='hub'
 alias gtidy='git remote prune origin && git branch --merged master | egrep -v "master|develop$" | xargs git branch -d'
 
-alias angora="${HOME}/.virtualenv/angora/bin/angora"
+alias sync_upstream='git checkout master && git fetch upstream && git merge upstream/master && git push origin master'

@@ -20,7 +20,6 @@ formulae=(
   flake8
   git
   heroku-toolbelt
-  htop
   hub
   jq
   neovim
