@@ -31,7 +31,7 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'tpope/vim-abolish'
 Plug 'airblade/vim-gitgutter'
-Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'godlygeek/tabular'
 Plug 'jgdavey/vim-blockle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -62,9 +62,12 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'd11wtq/tomorrow-theme-vim'
 Plug 'justincampbell/vim-eighties'
 Plug 'mhinz/vim-janah'
+Plug 'fenetikm/falcon'
 
 " All of your Plugs must be added before the following line
 call plug#end()
+
+set noshowmode
 
 " Python support
 let g:python2_host_prog = '/usr/local/bin/python'
@@ -85,9 +88,9 @@ nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " Color options
-" colorscheme Tomorrow-Night-Eighties
-autocmd ColorScheme janah highlight Normal ctermbg=235
-colorscheme janah
+" autocmd ColorScheme janah highlight Normal ctermbg=235
+" colorscheme janah
+colorscheme falcon
 
 set splitbelow
 set splitright
@@ -134,11 +137,12 @@ set list
 set colorcolumn=120
 highlight! link ColorColumn CursorColumn
 
-let g:airline_powerline_fonts            = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_guide_size           = 1
 let g:indent_guides_start_level          = 2
+let g:falcon_lightline                   = 1
 
+let g:lightline = {'colorscheme': 'falcon', 'component_function': {'gitbranch': 'fugitive#head'}}
 let g:numbers_exclude    = ['tagbar', 'gundo', 'minibufexpl']
 
 nnoremap <F3> :NumbersToggle<CR>
@@ -174,6 +178,7 @@ autocmd BufNewFile,BufRead *.hjson set filetype=json
 autocmd BufNewFile,BufRead *.skim set filetype=slim
 autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
 autocmd BufNewFile,BufRead Dockerfile.* set filetype=dockerfile
+autocmd BufNewFile,BufRead *.rules set filetype=yaml
 """""""""""""""
 """"" ALE """""
 """""""""""""""
