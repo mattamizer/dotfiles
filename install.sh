@@ -36,6 +36,10 @@ git config --global alias.yolo 'push --force --no-verify'
 git config --global alias.co 'checkout'
 git config --global alias.cob 'checkout -b'
 git config --global alias.it 'fetch --all --prune --tags --recurse-submodules'
+git config --global merge.tool diffconflicts
+git config --global mergetool.diffconflicts.cmd 'vim -c DiffConflicts "$MERGED" "$BASE" "$LOCAL" "$REMOTE"'
+git config --global mergetool.diffconflicts.trustExitCode true
+git config --global mergetool.keepBackup false
 # Hub alias, but whatever
 git config --global alias.pr 'pull-request'
 git config --global color.ui true
