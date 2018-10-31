@@ -109,6 +109,7 @@ set lazyredraw
 autocmd FileType gitcommit,markdown set nonumber
 autocmd FileType gitcommit,markdown set spell
 autocmd FileType markdown,"" set wrap
+au BufRead,BufNewFile *.md setlocal textwidth=70
 
 " Put temp files in the same spot
 set backupdir=~/.vim/backup
