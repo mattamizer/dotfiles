@@ -26,6 +26,8 @@ Plug 'stephpy/vim-yaml'
 Plug 'timcharper/textile.vim'
 Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'majutsushi/tagbar'
 
 "  File exploration
 Plug 'scrooloose/nerdtree'
@@ -59,12 +61,14 @@ Plug 'nathanaelkane/vim-indent-guides'
 " Neosnippet
 Plug 'shougo/neosnippet.vim'
 Plug 'shougo/neosnippet-snippets'
+
 " Colors
 Plug 'altercation/vim-colors-solarized'
 Plug 'd11wtq/tomorrow-theme-vim'
 Plug 'justincampbell/vim-eighties'
 Plug 'mhinz/vim-janah'
 Plug 'fenetikm/falcon'
+Plug 'patstockwell/vim-monokai-tasty'
 
 " All of your Plugs must be added before the following line
 call plug#end()
@@ -92,7 +96,9 @@ nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 " Color options
 " autocmd ColorScheme janah highlight Normal ctermbg=235
 " colorscheme janah
-colorscheme falcon
+" colorscheme falcon
+let g:vim_monokai_tasty_italic = 1
+colorscheme vim-monokai-tasty
 
 set splitbelow
 set splitright
@@ -143,16 +149,45 @@ highlight! link ColorColumn CursorColumn
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_guide_size           = 1
 let g:indent_guides_start_level          = 2
-let g:falcon_lightline                   = 1
+" let g:falcon_lightline                   = 1
 
-let g:lightline = {'colorscheme': 'falcon', 'component_function': {'gitbranch': 'fugitive#head'}}
+let g:lightline = {'colorscheme': 'monokai_tasty', 'component_function': {'gitbranch': 'fugitive#head'}}
 let g:numbers_exclude    = ['tagbar', 'gundo', 'minibufexpl']
 
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
 
 " deoplete
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
 let g:deoplete#enable_at_startup = 1
+call deoplete#initialize()
+
+" Syntastic Config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" (Optional)Remove Info(Preview) window
+set completeopt-=preview
+
+" (Optional)Hide Info(Preview) window after completions
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" (Optional) Enable terraform plan to be include in filter
+let g:syntastic_terraform_tffilter_plan = 1
+
+" (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
+let g:terraform_completion_keys = 1
+
+" (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
+let g:terraform_registry_module_completion = 0
 
 " rainbow_parentheses.vim
 autocmd VimEnter * RainbowParenthesesToggle
@@ -186,6 +221,15 @@ autocmd BufNewFile,BufRead *.rules set filetype=yaml
 """"" ALE """""
 """""""""""""""
 " Use the quickfix window, not the location window
+let g:ale_fixers = {
+      \ '*': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+      \ 'bash': ['shellcheck'],
+      \ 'go': ['gofmt', 'golint'],
+      \ 'json': ['jq', 'prettier'],
+      \ 'python': ['autopep8', 'black', 'add_blank_lines_for_python_control_statements'],
+      \ 'terraform': ['terraform'],
+      \ 'yml': ['ymllint']
+      \}
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 " Open the window when there are errors
@@ -193,6 +237,8 @@ let g:ale_open_list = 1
 " Only save on write, otherwise the cursor jumping fucks with my chi
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
+" Fix on save
+let g:ale_fix_on_save = 1
 
 """"""""""""""""
 """ NERDTree """
@@ -211,25 +257,6 @@ if has("autocmd")
     autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
   endif
 endif
-
-""""""""""""""""""
-""" Whitespace """
-""""""""""""""""""
-
-" Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | :call <SID>StripTrailingWhitespaces() | endif
-
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    silent! %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
 
 """"""""""""""""""
 """" FZF + RG """"
