@@ -24,8 +24,7 @@ formulae=(
   jq
   neovim
   pick
-  python
-  python3
+  pyenv
   reattach-to-user-namespace
   ruby-install
   slackcat

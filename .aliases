@@ -22,25 +22,9 @@ alias vi="nvim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
 
-# Bundler
-alias b="bundle"
-
-# Tests and Specs
-alias t="ruby -I test"
-alias cuc="bundle exec cucumber"
-
-# Rails
-alias be="bundle exec"
-alias rake="noglob rake"
-alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
-alias m="migrate"
-alias rk="rake"
-alias s="rspec"
-alias z="zeus"
-
 alias reload!='. ~/.zshrc'
 
 alias git='hub'
-alias gtidy='git remote prune origin && git branch --merged master | egrep -v "master|develop$" | xargs git branch -d'
+alias gtidy='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 
-alias sync_upstream='git checkout develop && git fetch upstream && git rebase upstream/develop && git push --force-with-lease origin develop'
+alias sync_upstream='git checkout main && git fetch upstream && git rebase upstream/main && git push --force-with-lease origin main'

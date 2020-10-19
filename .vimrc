@@ -28,6 +28,7 @@ Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
 Plug 'majutsushi/tagbar'
+Plug 'glench/vim-jinja2-syntax'
 
 "  File exploration
 Plug 'scrooloose/nerdtree'
@@ -44,50 +45,53 @@ Plug 'lokaltog/vim-easymotion'
 Plug 'mattn/gist-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'myusuf3/numbers.vim'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'sjl/gundo.vim'
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'davidhalter/jedi'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'whiteinge/diffconflicts'
+Plug 'luan/vim-concourse'
 
 "indent guides
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Neosnippet
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'shougo/neosnippet.vim'
 Plug 'shougo/neosnippet-snippets'
 
 " Colors
-Plug 'altercation/vim-colors-solarized'
-Plug 'd11wtq/tomorrow-theme-vim'
-Plug 'justincampbell/vim-eighties'
-Plug 'mhinz/vim-janah'
-Plug 'fenetikm/falcon'
 Plug 'patstockwell/vim-monokai-tasty'
+Plug 'embark-theme/vim', { 'as': 'embark' }
 
 " All of your Plugs must be added before the following line
 call plug#end()
 
 set noshowmode
+set termguicolors
 
 set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 
 " Python support
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python2_host_prog = '~/.pyenv/shims/python'
+let g:python3_host_prog = '~/.pyenv/shims/python'
 
 " Remap leader to comma
 let mapleader="\<Space>"
 
 " Clear highlight on esc
 nnoremap <esc> :noh<cr><esc>
-" :W to sudo save
-command W w !sudo tee % > /dev/null
 
 set grepprg=rg\ --vimgrep
 
@@ -96,11 +100,18 @@ nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " Color options
-" autocmd ColorScheme janah highlight Normal ctermbg=235
-" colorscheme janah
-" colorscheme falcon
-let g:vim_monokai_tasty_italic = 1
-colorscheme vim-monokai-tasty
+" let g:vim_monokai_tasty_italic = 1
+" colorscheme vim-monokai-tasty
+colorscheme embark
+set fillchars+=vert:│
+
+let g:lightline = {
+      \'colorscheme': 'embark',
+      \'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \'component_function': {'gitbranch': 'FugitiveHead'},}
 
 set splitbelow
 set splitright
@@ -151,18 +162,16 @@ highlight! link ColorColumn CursorColumn
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_guide_size           = 1
 let g:indent_guides_start_level          = 2
-" let g:falcon_lightline                   = 1
 
-let g:lightline = {'colorscheme': 'monokai_tasty', 'component_function': {'gitbranch': 'fugitive#head'}}
 let g:numbers_exclude    = ['tagbar', 'gundo', 'minibufexpl']
 
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
 
 " deoplete
+let g:deoplete#enable_at_startup = 1
 let g:deoplete#omni_patterns = {}
 let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
-let g:deoplete#enable_at_startup = 1
 call deoplete#initialize()
 
 " Syntastic Config
@@ -219,6 +228,7 @@ autocmd BufNewFile,BufRead *.skim set filetype=slim
 autocmd BufNewFile,BufRead *.md,*.markdown set filetype=markdown
 autocmd BufNewFile,BufRead Dockerfile.* set filetype=dockerfile
 autocmd BufNewFile,BufRead *.rules set filetype=yaml
+autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 """""""""""""""
 """"" ALE """""
 """""""""""""""
@@ -226,7 +236,7 @@ autocmd BufNewFile,BufRead *.rules set filetype=yaml
 let g:ale_fixers = {
       \ '*': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
       \ 'bash': ['shellcheck'],
-      \ 'go': ['gofmt', 'golint'],
+      \ 'go': ['gofmt'],
       \ 'json': ['jq', 'prettier'],
       \ 'python': ['autopep8', 'black', 'add_blank_lines_for_python_control_statements'],
       \ 'terraform': ['terraform'],
@@ -249,6 +259,11 @@ let g:ale_fix_on_save = 1
 let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
 nnoremap <leader>n :NERDTreeToggle<enter>
 
+""""""""""""""""
+"""" Tagbar """"
+""""""""""""""""
+nnoremap <leader>t :TagbarToggle<CR>
+
 """"""""""""""""""
 """" Keywords """"
 """"""""""""""""""
@@ -269,10 +284,11 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 """"""""""""""""""
 """ Neosnippet """
 """"""""""""""""""
-" Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
 if has('conceal')
