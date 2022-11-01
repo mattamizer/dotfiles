@@ -1,27 +1,36 @@
 #!/bin/bash -ex
 
+xcode-select --install
+
+# Install homebrew and a bunch of taps
 if [ -a homebrew.sh ]; then
   ./homebrew.sh
 fi
 
+# Install Zpresto
 if [ -a prezto.sh ]; then
   ./prezto.sh
 fi
 
+# Install SDKMAN
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
 mkdir -p ~/.config
 mkdir -p ~/.vim/backup
+mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
+mkdir -p ~/code
+mkdir -p ~/gocode/src/
+
 ln -fs ~/.dotfiles/.agignore ~/.agignore
 ln -fs ~/.dotfiles/.aliases ~/.aliases
 ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
-ln -fs ~/.dotfiles/.vimrc ~/.vimrc
 ln -fs ~/.dotfiles/flake8 ~/.config/flake8
 
-mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-ln -s ~/.vim $XDG_CONFIG_HOME/nvim
-ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+cp -r config/ "$HOME/.config/"
 
-mkdir -p ~/code
-mkdir -p ~/gocode/src/
 
 # git
 git config --global alias.amend 'commit --amend --reuse-message HEAD'
@@ -42,7 +51,7 @@ git config --global mergetool.keepBackup false
 # Hub alias, but whatever
 git config --global alias.pr 'pull-request'
 git config --global color.ui true
-git config --global core.editor "nvim"
+git config --global core.editor "vim"
 git config --global core.excludesfile ~/.gitignore
 git config --global github.user "mattamizer"
 git config --global help.autocorrect 25
@@ -52,11 +61,5 @@ git config --global user.email "mattamizer@pm.me"
 git config --global user.name "Matthew Morrissey"
 git config --global web.browser open
 git config --global credential.helper osxkeychain
-
-# vim-plug
-mkdir -p ~/.vim/autoload
-curl -fLo ~/.vim/autoload/plug.vim \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim +PlugClean +PlugInstall +qa
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
