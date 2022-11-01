@@ -18,7 +18,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'tudorprodan/html_annoyance.vim'
 Plug 'xenoterracide/html.vim'
 "   Go
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 "   Other
 Plug 'digitaltoad/vim-jade'
 Plug 'slim-template/vim-slim'
@@ -31,11 +31,11 @@ Plug 'majutsushi/tagbar'
 Plug 'glench/vim-jinja2-syntax'
 
 "  File exploration
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 
 Plug 'tpope/vim-abolish'
 Plug 'airblade/vim-gitgutter'
-Plug 'itchyny/lightline.vim'
 Plug 'godlygeek/tabular'
 Plug 'jgdavey/vim-blockle'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -56,6 +56,10 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'whiteinge/diffconflicts'
 Plug 'luan/vim-concourse'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+
+" statusline
+Plug 'itchyny/lightline.vim'
 
 "indent guides
 Plug 'nathanaelkane/vim-indent-guides'
@@ -74,6 +78,7 @@ Plug 'shougo/neosnippet-snippets'
 " Colors
 Plug 'patstockwell/vim-monokai-tasty'
 Plug 'embark-theme/vim', { 'as': 'embark' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " All of your Plugs must be added before the following line
 call plug#end()
@@ -102,11 +107,12 @@ nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 " Color options
 " let g:vim_monokai_tasty_italic = 1
 " colorscheme vim-monokai-tasty
-colorscheme embark
+" colorscheme embark
+colorscheme dracula
 set fillchars+=vert:│
 
 let g:lightline = {
-      \'colorscheme': 'embark',
+      \'colorscheme': 'dracula',
       \'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -240,7 +246,8 @@ let g:ale_fixers = {
       \ 'json': ['jq', 'prettier'],
       \ 'python': ['autopep8', 'black', 'add_blank_lines_for_python_control_statements'],
       \ 'terraform': ['terraform'],
-      \ 'yml': ['ymllint']
+      \ 'yml': ['yamllint'],
+      \ 'javascript': ['eslint']
       \}
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
@@ -256,8 +263,11 @@ let g:ale_fix_on_save = 1
 """ NERDTree """
 """"""""""""""""
 
-let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
-nnoremap <leader>n :NERDTreeToggle<enter>
+" let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
+" nnoremap <leader>n :NERDTreeToggle<enter>
+
+let g:chadtree_settings = {'ignore.name_glob': ["*.pyc", "*__pycache__"], 'theme.icon_glyph_set': 'devicons'}
+nnoremap <leader>n <cmd>CHADopen<cr>
 
 """"""""""""""""
 """" Tagbar """"

@@ -9,7 +9,6 @@ if [ -a prezto.sh ]; then
 fi
 
 mkdir -p ~/.config
-mkdir -p ~/.zsh
 mkdir -p ~/.vim/backup
 ln -fs ~/.dotfiles/.agignore ~/.agignore
 ln -fs ~/.dotfiles/.aliases ~/.aliases
@@ -49,7 +48,7 @@ git config --global github.user "mattamizer"
 git config --global help.autocorrect 25
 git config --global pull.ff only
 git config --global push.default current
-git config --global user.email "mattamizer@gmail.com"
+git config --global user.email "mattamizer@pm.me"
 git config --global user.name "Matthew Morrissey"
 git config --global web.browser open
 git config --global credential.helper osxkeychain

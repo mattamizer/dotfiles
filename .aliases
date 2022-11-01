@@ -18,13 +18,13 @@ alias gci="git pull --rebase && rake && git push"
 alias ggrep="git grep --break --heading -n"
 
 # Neovim
-alias vi="nvim"
-alias vim="nvim"
-alias vimdiff="nvim -d"
+alias vi="lvim"
+alias vim="lvim"
+alias vimdiff="lvim -d"
 
 alias reload!='. ~/.zshrc'
 
 alias git='hub'
-alias gtidy='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
+alias gtidy='git branch --merged | egrep -v "(^\*|main|develop)" | xargs git branch -d'
 
 alias sync_upstream='git checkout main && git fetch upstream && git rebase upstream/main && git push --force-with-lease origin main'

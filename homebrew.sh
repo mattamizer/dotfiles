@@ -8,7 +8,6 @@ if ! brew doctor; then
   exit 1
 fi
 
-brew tap homebrew/binary
 brew tap neovim/homebrew-neovim
 brew tap thoughtbot/formulae
 
