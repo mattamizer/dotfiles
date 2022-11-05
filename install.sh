@@ -1,6 +1,6 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
-xcode-select --install
+xcode-select --install || echo "Tools already installed, nothing to do."
 
 # Install homebrew and a bunch of taps
 if [ -a homebrew.sh ]; then
