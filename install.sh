@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-xcode-select --install || echo "Tools already installed, nothing to do."
-
 # Install homebrew and a bunch of taps
 if [ -a homebrew.sh ]; then
   ./homebrew.sh
@@ -29,7 +27,7 @@ ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -fs ~/.dotfiles/flake8 ~/.config/flake8
 
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
-cp -r config/ "$HOME/.config/"
+ln -fs ~/.dotfiles/config/lvim/ "$HOME/.config/lvim"
 
 
 # git
