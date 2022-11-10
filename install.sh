@@ -27,7 +27,7 @@ ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -fs ~/.dotfiles/flake8 ~/.config/flake8
 
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
-ln -fs ~/.dotfiles/config/lvim/ "$HOME/.config/lvim"
+gln -sr ~/.dotfiles/config/lvim/ "$HOME/.config/"
 
 
 # git
