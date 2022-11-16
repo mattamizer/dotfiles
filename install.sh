@@ -15,19 +15,19 @@ curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 
-mkdir -p ~/.config
-mkdir -p ~/.vim/backup
+mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.vim/backup"
 mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
-mkdir -p ~/code
-mkdir -p ~/gocode/src/
+mkdir -p "$HOME/code"
+mkdir -p "$HOME/gocode/src/"
 
-ln -fs ~/.dotfiles/.agignore ~/.agignore
-ln -fs ~/.dotfiles/.aliases ~/.aliases
-ln -fs ~/.dotfiles/.tmux.conf ~/.tmux.conf
-ln -fs ~/.dotfiles/flake8 ~/.config/flake8
+ln -fs "$HOME/.dotfiles/.agignore" "$HOME/.agignore"
+ln -fs "$HOME/.dotfiles/.aliases" "$HOME/.aliases"
+ln -fs "$HOME/.dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+ln -fs "$HOME/.dotfiles/flake8" "$HOME/.config/flake8"
 
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
-gln -sr ~/.dotfiles/config/lvim/ "$HOME/.config/"
+gln -sr "$HOME/.dotfiles/config/lvim/" "$HOME/.config/"
 
 
 # git
@@ -50,7 +50,7 @@ git config --global mergetool.keepBackup false
 git config --global alias.pr 'pull-request'
 git config --global color.ui true
 git config --global core.editor "lvim"
-git config --global core.excludesfile ~/.gitignore
+git config --global core.excludesfile "$HOME/.gitignore"
 git config --global github.user "mattamizer"
 git config --global help.autocorrect 25
 git config --global pull.ff only
@@ -60,4 +60,4 @@ git config --global user.name "Matthew Morrissey"
 git config --global web.browser open
 git config --global credential.helper osxkeychain
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
