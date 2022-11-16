@@ -20,6 +20,7 @@ mkdir -p "$HOME/.vim/backup"
 mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
 mkdir -p "$HOME/code"
 mkdir -p "$HOME/gocode/src/"
+mkdir -p "$HOME/Notes"
 
 ln -fs "$HOME/.dotfiles/.agignore" "$HOME/.agignore"
 ln -fs "$HOME/.dotfiles/.aliases" "$HOME/.aliases"
