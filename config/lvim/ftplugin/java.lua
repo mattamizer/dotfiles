@@ -53,7 +53,7 @@ local config = {
 	cmd = {
 
 		-- 💀
-		home .. "/.sdkman/candidates/java/19.0.1-open", -- or '/path/to/java11_or_newer/bin/java'
+		home .. "/.sdkman/candidates/java/19.0.1-open/bin/java", -- or '/path/to/java11_or_newer/bin/java'
 		-- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
