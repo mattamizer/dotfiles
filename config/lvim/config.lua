@@ -218,6 +218,14 @@ lvim.plugins = {
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end,
   },
+  {
+  'phaazon/mind.nvim',
+  branch = 'v2.2.0',
+  requires = { 'nvim-lua/plenary.nvim' },
+  config = function()
+    require'mind'.setup()
+  end
+  }
 }
 
 lvim.builtin.treesitter.matchup.enable = true
@@ -225,8 +233,7 @@ require("user.dap-ui")
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.json", "*.jsonc" },
-  -- enable wrap mode for json files only
+  pattern = { "*.json", "*.jsonc", "*.md" },
   command = "setlocal wrap",
 })
 vim.api.nvim_create_autocmd("FileType", {
