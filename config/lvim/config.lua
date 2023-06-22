@@ -93,8 +93,8 @@ lvim.builtin.treesitter.highlight.enable = true
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {
-    "sumneko_lua",
-    "jsonls",
+  "lua_ls",
+  "jsonls",
 }
 -- -- change UI setting of `LspInstallInfo`
 -- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
@@ -114,6 +114,7 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
 local opts = {} -- check the lspconfig documentation for a list of all possible options
 require("lvim.lsp.manager").setup("ltex", opts)
 require("lvim.lsp.manager").setup("ansiblels", opts)
+require("lvim.lsp.manager").setup("terraformls", opts)
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
@@ -179,7 +180,7 @@ lvim.plugins = {
   "p00f/nvim-ts-rainbow",
   {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
+    build = "cd app && npm install",
     ft = "markdown",
     config = function()
       vim.g.mkdp_auto_start = 1
@@ -219,12 +220,83 @@ lvim.plugins = {
     end,
   },
   {
-  'phaazon/mind.nvim',
-  branch = 'v2.2.0',
-  requires = { 'nvim-lua/plenary.nvim' },
-  config = function()
-    require'mind'.setup()
-  end
+    "nvim-neorg/neorg",
+    config = function()
+      require('neorg').setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.norg.completion"] = {
+            config = {
+              engine = "nvim-cmp"
+            }
+          }, -- Adds completion
+          ["core.norg.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+            },
+          },
+        },
+      }
+    end,
+    build = ":Neorg sync-parsers",
+    dependencies = "nvim-lua/plenary.nvim",
+  },
+  {
+    "tpope/vim-fugitive",
+    cmd = {
+      "G",
+      "Git",
+      "Gdiffsplit",
+      "Gread",
+      "Gwrite",
+      "Ggrep",
+      "GMove",
+      "GDelete",
+      "GBrowse",
+      "GRemove",
+      "GRename",
+      "Glgrep",
+      "Gedit"
+    },
+    ft = { "fugitive" }
+  },
+  {
+    "lewis6991/gitsigns.nvim", -- git signs
+    config = function()
+      require("gitsigns").setup({
+        signcolumn = false,
+        status_formatter = function(status)
+          local added, changed, removed = status.added, status.changed, status.removed
+          local status_txt = {}
+          if added and added > 0 then
+            table.insert(status_txt, "+" .. added)
+          end
+          if changed and changed > 0 then
+            table.insert(status_txt, "~" .. changed)
+          end
+          if removed and removed > 0 then
+            table.insert(status_txt, "-" .. removed)
+          end
+
+          -- format the table with commas if there are multiple changes
+          if #status_txt > 1 then
+            for i = 2, #status_txt do
+              status_txt[i] = "," .. status_txt[i]
+            end
+          end
+
+          -- check if there are any changes
+          if #status_txt > 2 then
+            return string.format("[%s]", table.concat(status_txt))
+          else
+            return ""
+          end
+        end
+      })
+    end
   }
 }
 
@@ -236,10 +308,18 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { "*.json", "*.jsonc", "*.md" },
   command = "setlocal wrap",
 })
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.md" },
+  command = "setlocal textwidth=120",
+})
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "zsh",
   callback = function()
     -- let treesitter use bash highlight for zsh files as well
     require("nvim-treesitter.highlight").attach(0, "bash")
   end,
+})
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
 })
