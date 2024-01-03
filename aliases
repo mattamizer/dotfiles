@@ -18,9 +18,9 @@ alias gci="git pull --rebase && rake && git push"
 alias ggrep="git grep --break --heading -n"
 
 # Neovim
-alias vi="lvim"
-alias vim="lvim"
-alias vimdiff="lvim -d"
+alias vi="nvim"
+alias vim="nvim"
+alias vimdiff="nvim -d"
 
 alias reload!='. ~/.zshrc'
 
@@ -31,3 +31,6 @@ alias sync_upstream='git checkout main && git fetch upstream && git rebase upstr
 
 #OS X
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+
+#Autobahn jump scp
+alias jumpscp="jump -c >/dev/null && scp -o 'ProxyCommand ssh -qx svcAutobahn@jump.autobahn.comcast.com -W %h:%p'"

@@ -22,13 +22,13 @@ mkdir -p "$HOME/code"
 mkdir -p "$HOME/gocode/src/"
 mkdir -p "$HOME/Notes"
 
-ln -fs "$HOME/.dotfiles/.agignore" "$HOME/.agignore"
-ln -fs "$HOME/.dotfiles/.aliases" "$HOME/.aliases"
-ln -fs "$HOME/.dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+ln -fs "$HOME/.dotfiles/agignore" "$HOME/.agignore"
+ln -fs "$HOME/.dotfiles/aliases" "$HOME/.aliases"
+ln -fs "$HOME/.dotfiles/tmux.conf" "$HOME/.tmux.conf"
+ln -fs "$HOME/.dotfiles/tmux.reset.conf" "$HOME/.tmux.conf"
 ln -fs "$HOME/.dotfiles/flake8" "$HOME/.config/flake8"
 
-bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
-gln -sr "$HOME/.dotfiles/config/lvim/" "$HOME/.config/"
+gln -sr "$HOME/.dotfiles/config/nvim/" "$HOME/.config/"
 
 
 # git
