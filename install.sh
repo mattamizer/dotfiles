@@ -5,11 +5,6 @@ if [ -a homebrew.sh ]; then
   ./homebrew.sh
 fi
 
-# Install Zpresto
-if [ -a prezto.sh ]; then
-  ./prezto.sh
-fi
-
 # Install SDKMAN
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -50,7 +45,7 @@ git config --global mergetool.keepBackup false
 # Hub alias, but whatever
 git config --global alias.pr 'pull-request'
 git config --global color.ui true
-git config --global core.editor "lvim"
+git config --global core.editor "nvim"
 git config --global core.excludesfile "$HOME/.gitignore"
 git config --global github.user "mattamizer"
 git config --global help.autocorrect 25
