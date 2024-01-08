@@ -17,7 +17,12 @@ wk.register({
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>confirm q<CR>", "Quit" },
   ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
-  ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
+  ["c"] = {
+    function()
+      require("utils.functions").buf_kill "bd"
+    end,
+    "Close Buffer"
+  },
   ["f"] = {
     function()
       local opts = { previwer = false }
@@ -29,7 +34,7 @@ wk.register({
     "Find File",
   },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["e"] = { "<cmd>Neotree toggle<CR>", "Explorer" },
+  ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
   b = {
     name = "Buffers",
     j = { "<cmd>BufferLinePick<cr>", "Jump" },
@@ -37,7 +42,6 @@ wk.register({
     b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
     n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
     W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
-    -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
     e = {
       "<cmd>BufferLinePickClose<cr>",
       "Pick which buffer to close",
@@ -181,7 +185,7 @@ wk.register({
   },
   Q = {
     name = "Quickfix",
-    n = {":cnext<CR>", "Jump to the next item in the list"},
-    p = {":cprev<CR>", "Jump to the previous item in the list"},
+    n = { ":cnext<CR>", "Jump to the next item in the list" },
+    p = { ":cprev<CR>", "Jump to the previous item in the list" },
   }
 }, { prefix = "<leader>" })

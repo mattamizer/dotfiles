@@ -22,3 +22,12 @@ vim.cmd [[ set termguicolors ]]
 --Line numbers
 vim.wo.number = true
 vim.opt.relativenumber = true
+
+-- GitHub Copilot
+vim.cmd[[highlight CopilotSuggestion ctermfg=8 guifg=white guibg=#5c6370]]
+
+-- Markdown preview
+vim.cmd [[
+  let g:mkdp_theme = 'light'
+  let g:mkdp_command_for_global = 1
+]]
