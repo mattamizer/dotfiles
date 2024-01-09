@@ -1,12 +1,77 @@
 add_newline = false
 # A minimal left prompt
-format = """$directory$character"""
+# format = """$directory$character"""
 palette = "catppuccin_macchiato"
+# Left prompt with important information
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$fill\
+$nodejs\
+$cmd_duration $jobs $time\
+$line_break\
+$character"""
+
 # move the rest of the prompt to the right
 right_format = """$all"""
 
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
+
+# pyenv takes a while
+command_timeout = 1000
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+
+[fill]
+symbol = " "
+
+[directory]
+read_only = " "
+truncation_length = 4
+truncate_to_repo = false
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vicmd_symbol = "[❮](green)"
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+
+[jobs]
+symbol = ""
+number_threshold = 1
+format = "[$symbol]($style)"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[git_state]
+format = '[\($state( $progress_current/$progress_total)\)]($style) '
+
+[git_metrics]
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style)"
+
+[memory_usage]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[time]
+disabled = false
+format = "[$time]($style)"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
@@ -54,3 +119,9 @@ surface0 = "#363a4f"
 base = "#24273a"
 mantle = "#1e2030"
 crust = "#181926"
+
+[custom.stunnel]
+when = "ps aux | grep stunnel | grep -v grep"
+command = "ps -o etime= -p $(ps aux | grep stunnel | grep -v grep | awk '{print $2}')"
+style = "red"
+format = "[TUNNEL OPEN for $output]($style)"
