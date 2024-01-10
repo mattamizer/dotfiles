@@ -93,7 +93,7 @@ wk.register({
     g = {
       function()
         local Terminal = require("toggleterm.terminal").Terminal
-        local lazygit = Terminal:new {
+        local lazygit = Terminal:new ({
           cmd = "lazygit",
           hidden = true,
           direction = "float",
@@ -107,7 +107,7 @@ wk.register({
           end,
           on_close = function(_) end,
           count = 99,
-        }
+        })
         lazygit:toggle()
       end,
       "Lazygit" },
