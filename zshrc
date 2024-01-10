@@ -10,6 +10,7 @@ eval $(/opt/homebrew/bin/brew shellenv)
 export HOMEBREW_BUNDLE_FILE="$HOME/.dotfiles/Brewfile"
 
 # Mess with PATH
+export XDG_CONFIG_HOME="$HOME/.config"
 export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin:$GOPATH/src
 export PATH="/usr/local/sbin:$PATH"
