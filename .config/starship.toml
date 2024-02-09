@@ -1,6 +1,4 @@
 add_newline = false
-# A minimal left prompt
-# format = """$directory$character"""
 palette = "catppuccin_macchiato"
 # Left prompt with important information
 format = """
@@ -24,7 +22,7 @@ right_format = """$all"""
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # pyenv takes a while
-command_timeout = 1000
+command_timeout = 3000
 
 [nodejs]
 format = "[$symbol($version )]($style)"
@@ -125,4 +123,3 @@ when = "ps aux | grep stunnel | grep -v grep"
 command = "ps -o etime= -p $(ps aux | grep stunnel | grep -v grep | awk '{print $2}')"
 style = "red"
 format = "[TUNNEL OPEN for $output]($style)"
-

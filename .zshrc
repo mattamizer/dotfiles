@@ -7,10 +7,9 @@ bindkey -M vicmd '^r' history-incremental-search-backward
 
 # Configure zsh to understand where brew is
 eval $(/opt/homebrew/bin/brew shellenv)
-export HOMEBREW_BUNDLE_FILE="$HOME/.dotfiles/Brewfile"
+export HOMEBREW_BUNDLE_FILE="$HOME/dotfiles/Brewfile"
 
 # Mess with PATH
-export XDG_CONFIG_HOME="$HOME/.config"
 export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin:$GOPATH/src
 export PATH="/usr/local/sbin:$PATH"
@@ -34,6 +33,9 @@ gocode() {
 # Add fuzzy finding
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Docker using Colima
+export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -52,6 +54,9 @@ eval "$(starship init zsh)"
 
 # Syntax highlights
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zoxide (https://https://github.com/ajeetdsouza/zoxide/tree/main)
+ eval "$(zoxide init zsh)"
 
 # Work specific stuff
 export VAULT_ADDR=https://or.vault.comcast.com
