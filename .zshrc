@@ -7,7 +7,7 @@ bindkey -M vicmd '^r' history-incremental-search-backward
 
 # Configure zsh to understand where brew is
 eval $(/opt/homebrew/bin/brew shellenv)
-
+export HOMEBREW_BUNDLE_FILE=$HOME/.config/brewfile/Brewfile
 # Mess with PATH
 export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin:$GOPATH/src
