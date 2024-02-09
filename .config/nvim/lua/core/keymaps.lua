@@ -93,7 +93,7 @@ wk.register({
     g = {
       function()
         local Terminal = require("toggleterm.terminal").Terminal
-        local lazygit = Terminal:new ({
+        local lazygit = Terminal:new({
           cmd = "lazygit",
           hidden = true,
           direction = "float",
@@ -111,27 +111,24 @@ wk.register({
         lazygit:toggle()
       end,
       "Lazygit" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
-    l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-    u = {
-      "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-      "Undo Stage Hunk",
-    },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    C = {
-      "<cmd>Telescope git_bcommits<cr>",
-      "Checkout commit(for current file)",
+    ce = { "<cmd>CopilotChatExplain<cr>", "CopilotChat - Explain code" },
+    ct = { "<cmd>CopilotChatTests<cr>", "CopilotChat - Generate tests" },
+    cr = { "<cmd>CopilotChatReview<cr>", "CopilotChat - Review code" },
+    cR = { "<cmd>CopilotChatRefactor<cr>", "CopilotChat - Refactor code" },
+    cs = { "<cmd>CopilotChatSummarize<cr>", "CopilotChat - Summarize text" },
+    cS = { "<cmd>CopilotChatSpelling<cr>", "CopilotChat - Correct spelling" },
+    cw = { "<cmd>CopilotChatWording<cr>", "CopilotChat - Improve wording" },
+    cc = { "<cmd>CopilotChatConcise<cr>", "CopilotChat - Make text concise" },
+    cv = {
+      ":CopilotChatVsplitVisual",
+      mode = "x",
+      "CopilotChat - Open in vertical split",
     },
-    d = {
-      "<cmd>Gitsigns diffthis HEAD<cr>",
-      "Git Diff",
+    cx = {
+      ":CopilotChatInPlace<cr>",
+      mode = "x",
+      "CopilotChat - Run in-place code",
     },
   },
   l = {
