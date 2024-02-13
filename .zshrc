@@ -17,6 +17,9 @@ export PATH="/usr/local/go/bin:$PATH"
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
+# wezterm zsh integration
+[[ -f ~/dotfiles/scripts/wezterm.sh ]] && source ~/dotfiles/scripts/wezterm.sh
+
 # Custom functions
 branch() { git checkout ${1:-$(git branch | grep -v "^* "| pick)} ;}
 code() { cd ~/Code; cd ${1:-$(ls -at ~/code | pick)} ;}
