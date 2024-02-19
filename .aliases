@@ -2,10 +2,9 @@
 alias tlf="tail -f"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
-alias ...='../..'
-alias l='ls'
-alias ll='ls -al'
-alias lh='ls -Alh'
+alias ls='eza --icons'
+alias ll='eza -al --icons'
+alias lh='eza -Alh --icons'
 alias -g G='| grep'
 alias -g M='| less'
 alias -g L='| wc -l'
