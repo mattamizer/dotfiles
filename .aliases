@@ -2,15 +2,17 @@
 alias tlf="tail -f"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
-alias ls='eza --icons'
-alias ll='eza -al --icons'
+alias l='eza -al --icons'
+alias ls='eza -al --icons'
 alias lh='eza -Alh --icons'
+alias lt='eza -aT --icons'
 alias -g G='| grep'
 alias -g M='| less'
 alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
+alias cat="bat"
 
 # git
 alias gci="git pull --rebase && rake && git push"
