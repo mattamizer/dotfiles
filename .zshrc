@@ -52,13 +52,19 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Starship (https://starship.rs/) shell prompt
-eval "$(starship init zsh)"
+# Check that the function `starship_zle-keymap-select()` is defined.
+# xref: https://github.com/starship/starship/issues/3418
+type starship_zle-keymap-select >/dev/null || \
+  {
+    echo "Load starship"
+    eval "$(starship init zsh)"
+  }
 
 # Syntax highlights
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zoxide (https://https://github.com/ajeetdsouza/zoxide/tree/main)
- eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
 
 # Work specific stuff
 export VAULT_ADDR=https://or.vault.comcast.com
