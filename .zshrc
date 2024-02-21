@@ -31,6 +31,7 @@ gocode() {
     pick
   )}
 }
+cx() { cd "$@" && l; }
 
 # Add fuzzy finding
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
