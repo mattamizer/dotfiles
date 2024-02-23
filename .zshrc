@@ -22,7 +22,7 @@ export PATH="/usr/local/go/bin:$PATH"
 
 # Custom functions
 branch() { git checkout ${1:-$(git branch | grep -v "^* "| pick)} ;}
-code() { cd ~/Code; cd ${1:-$(ls -at ~/code | pick)} ;}
+code() { cd ~/Code; cd ${1:-$(eza -a ~/code | pick)} ;}
 gocode() {
   cd $GOPATH/src/${1:-$(
   find $GOPATH/src -type d -maxdepth 3 | \
