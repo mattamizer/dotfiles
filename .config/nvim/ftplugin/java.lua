@@ -21,7 +21,7 @@ end
 local home = os.getenv("HOME")
 if vim.fn.has("mac") == 1 then
 	WORKSPACE_PATH = home .. "/code/"
-	CONFIG = "mac"
+	CONFIG = "mac_arm"
 elseif vim.fn.has("unix") == 1 then
 	WORKSPACE_PATH = home .. "/code/"
 	CONFIG = "linux"
@@ -79,10 +79,7 @@ local config = {
 
 		-- 💀
 		"-jar",
-		vim.fn.glob(
-			home
-				.. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.700.v20231214-2017.jar"
-		),
+		vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
 		-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
 		-- Must point to the                                                     Change this to
 		-- eclipse.jdt.ls installation                                           the actual version
