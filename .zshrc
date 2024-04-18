@@ -34,7 +34,7 @@ gocode() {
 cx() { cd "$@" && l; }
 
 # Add fuzzy finding
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 
 # Docker using Colima
 export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
