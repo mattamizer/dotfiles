@@ -5,9 +5,6 @@ set -o vi
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
 
-# Configure zsh to understand where brew is
-eval $(/opt/homebrew/bin/brew shellenv)
-export HOMEBREW_BUNDLE_FILE=$HOME/.config/brewfile/Brewfile
 # Mess with PATH
 export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin:$GOPATH/src
@@ -15,7 +12,7 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 
 # aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f ~/.config/.aliases ]] && source ~/.config/.aliases
 
 # wezterm zsh integration
 [[ -f ~/dotfiles/scripts/wezterm.sh ]] && source ~/dotfiles/scripts/wezterm.sh
@@ -39,6 +36,16 @@ eval "$(fzf --zsh)"
 # Docker using Colima
 export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
 
+# Syntax Highlighting and Autosuggestions
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+bindkey '^w' autosuggest-execute
+bindkey '^e' autosuggest-accept
+bindkey '^u' autosuggest-toggle
+bindkey '^L' vi-forward-word
+bindkey '^k' up-line-or-search
+bindkey '^j' down-line-or-search
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -55,20 +62,16 @@ export NVM_DIR="$HOME/.nvm"
 # Starship (https://starship.rs/) shell prompt
 # Check that the function `starship_zle-keymap-select()` is defined.
 # xref: https://github.com/starship/starship/issues/3418
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 type starship_zle-keymap-select >/dev/null || \
   {
     echo "Load starship"
     eval "$(starship init zsh)"
   }
 
-# Syntax highlights
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zoxide (https://https://github.com/ajeetdsouza/zoxide/tree/main)
 eval "$(zoxide init zsh)"
-
-# Work specific stuff
-export VAULT_ADDR=https://or.vault.comcast.com
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

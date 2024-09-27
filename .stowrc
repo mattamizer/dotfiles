@@ -1,0 +1,7 @@
+--target=~/.config
+--ignore=.stowrc
+--ignore=DS_Store
+--ignore=README.txt
+--ignore=leaves.txt
+--ignore=.git
+--ignore=scripts
