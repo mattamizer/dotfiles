@@ -1,30 +1,102 @@
 local wezterm = require("wezterm")
-return {
-	-- color_scheme = 'termnial.sexy',
+-- Plugins
+-- Workspace Switcher
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+-- Tab Bar
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+-- Wezterm config object
+local config = {}
+-- if you are *NOT* lazy-loading smart-splits.nvim (recommended)
+--
+local function is_vim(pane)
+	-- this is set by the plugin, and unset on ExitPre in Neovim
+	return pane:get_user_vars().IS_NVIM == "true"
+end
+
+local direction_keys = {
+	h = "Left",
+	j = "Down",
+	k = "Up",
+	l = "Right",
+}
+
+local function split_nav(resize_or_move, key)
+	return {
+		key = key,
+		mods = resize_or_move == "resize" and "META" or "CTRL",
+		action = wezterm.action_callback(function(win, pane)
+			if is_vim(pane) then
+				-- pass the keys through to vim/nvim
+				win:perform_action({
+					SendKey = { key = key, mods = resize_or_move == "resize" and "META" or "CTRL" },
+				}, pane)
+			else
+				if resize_or_move == "resize" then
+					win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
+				else
+					win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+				end
+			end
+		end),
+	}
+end
+
+config = {
 	color_scheme = "Catppuccin Macchiato",
 	font = wezterm.font("Iosevka Nerd Font"),
-	enable_tab_bar = false,
+	enable_tab_bar = true,
+	use_fancy_tab_bar = false,
 	font_size = 16.0,
-	-- macos_window_background_blur = 40,
+	leader = { key = "a", mods = "CTRL" },
 	macos_window_background_blur = 30,
-
-	-- window_background_image = '/Users/omerhamerman/Downloads/3840x1080-Wallpaper-041.jpg',
-	-- window_background_image_hsb = {
-	-- 	brightness = 0.01,
-	-- 	hue = 1.0,
-	-- 	saturation = 0.5,
-	-- },
-	-- window_background_opacity = 0.92,
+	native_macos_fullscreen_mode = true,
 	window_background_opacity = 1.0,
-	-- window_background_opacity = 0.78,
-	-- window_background_opacity = 0.20,
 	window_decorations = "RESIZE",
 	keys = {
 		{
 			key = "f",
-			mods = "CTRL",
+			mods = "LEADER",
 			action = wezterm.action.ToggleFullScreen,
 		},
+		{
+			mods = "LEADER",
+			key = "-",
+			action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+		},
+		{
+			mods = "LEADER",
+			key = "=",
+			action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		},
+		{
+			mods = "LEADER",
+			key = "m",
+			action = wezterm.action.TogglePaneZoomState,
+		},
+		-- rotate panes
+		{
+			mods = "LEADER",
+			key = "Space",
+			action = wezterm.action.RotatePanes("Clockwise"),
+		},
+		-- show the pane selection mode, but have it swap the active and selected panes
+		{
+			mods = "LEADER",
+			key = "0",
+			action = wezterm.action.PaneSelect({
+				mode = "SwapWithActive",
+			}),
+		},
+		-- move between split panes
+		split_nav("move", "h"),
+		split_nav("move", "j"),
+		split_nav("move", "k"),
+		split_nav("move", "l"),
+		-- resize panes
+		split_nav("resize", "h"),
+		split_nav("resize", "j"),
+		split_nav("resize", "k"),
+		split_nav("resize", "l"),
 	},
 	mouse_bindings = {
 		-- Ctrl-click will open the link under the mouse cursor
@@ -57,3 +129,46 @@ return {
 		window:set_config_overrides(overrides)
 	end),
 }
+
+-- Workspace Switcher configuration
+workspace_switcher.zoxide_path = "/opt/homebrew/bin/zoxide"
+workspace_switcher.apply_to_config(config)
+-- Tabline configuration
+tabline.setup({
+	options = {
+		icons_enabled = true,
+		theme = "Catppuccin Mocha",
+		color_overrides = {},
+		section_separators = {
+			left = wezterm.nerdfonts.pl_left_hard_divider,
+			right = wezterm.nerdfonts.pl_right_hard_divider,
+		},
+		component_separators = {
+			left = wezterm.nerdfonts.pl_left_soft_divider,
+			right = wezterm.nerdfonts.pl_right_soft_divider,
+		},
+		tab_separators = {
+			left = wezterm.nerdfonts.pl_left_hard_divider,
+			right = wezterm.nerdfonts.pl_right_hard_divider,
+		},
+	},
+	sections = {
+		tabline_a = { "mode" },
+		tabline_b = { "workspace" },
+		tabline_c = { " " },
+		tab_active = {
+			"index",
+			{ "parent", padding = 0 },
+			"/",
+			{ "cwd", padding = { left = 0, right = 1 } },
+			{ "zoomed", padding = 0 },
+		},
+		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
+		tabline_x = { "ram", "cpu" },
+		tabline_y = { "datetime", "battery" },
+		tabline_z = { "hostname" },
+	},
+	extensions = { "smart_workspace_switcher" },
+})
+
+return config
