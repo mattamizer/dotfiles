@@ -2,12 +2,22 @@
 
 Dotfiles to configure all the things
 
-Assumes you're working on OSX but can easily be adapted for Linux.
+## Prerequisites
 
-    xcode-select --install
-    git clone git@github.com:mattmizer/dotfiles.git ~/.dotfiles
-    cd ~/.dotfiles
-    ./install.sh
+- [brew](brew.sh)
 
-Don't forget to run `tic xterm-256color-italics.terminfo` to install
-it to the system.
+## Usage
+
+Clone the repository, ex `git clone git@github.com:mattamizer/dotfiles.git`
+Once that's done, do the following.
+
+```bash
+cd dotfiles
+stow .
+xargs brew install < leaves.txt
+sh scripts/git.sh
+```
+
+## Migrating to a new machine
+
+Make sure to run `brew leaves > ~/dotfiles/leaves.txt` before you move to a new machine.

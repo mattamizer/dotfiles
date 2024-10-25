@@ -15,7 +15,6 @@ alias v="$VISUAL"
 alias cat="bat"
 
 # git
-alias gci="git pull --rebase && rake && git push"
 alias ggrep="git grep --break --heading -n"
 
 # Neovim
@@ -23,9 +22,8 @@ alias vi="nvim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
 
-alias reload!='. ~/.zshrc'
+alias reload!='source ~/.config/zsh/.zshrc'
 
-alias git='hub'
 alias gtidy='git branch --merged | egrep -v "(^\*|main|develop)" | xargs git branch -d'
 
 alias sync_upstream='git checkout main && git fetch upstream && git rebase upstream/main && git push --force-with-lease origin main'
