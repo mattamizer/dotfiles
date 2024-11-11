@@ -1,7 +1,8 @@
 local wezterm = require("wezterm")
 -- Plugins
--- Workspace Switcher
-local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+wezterm.plugin.update_all()
+-- Sessionizer
+local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
 -- Tab Bar
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 -- Wezterm config object
@@ -130,9 +131,15 @@ config = {
 	end),
 }
 
--- Workspace Switcher configuration
-workspace_switcher.zoxide_path = "/opt/homebrew/bin/zoxide"
-workspace_switcher.apply_to_config(config)
+-- Sessionizer configuration
+sessionizer.apply_to_config(config)
+sessionizer.config.paths = {
+	os.getenv("HOME") .. "/dotfiles",
+	os.getenv("HOME") .. "/code",
+	os.getenv("HOME") .. "/gocode",
+	os.getenv("HOME") .. "/Obsidian/Mattvault",
+}
+sessionizer.config.command_options.fd_path = "/opt/homebrew/bin/fd"
 -- Tabline configuration
 tabline.setup({
 	options = {
