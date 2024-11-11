@@ -52,10 +52,15 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # More autocomplete
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
 fi
+
+autoload -Uz compinit
+
+for dump in $HOME/.config/zsh/.zcompdump(N.mh+24); do
+    compinit
+done
+
+compinit -C
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
