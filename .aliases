@@ -1,7 +1,7 @@
 # Unix
 alias tlf="tail -f"
 alias ln='ln -v'
-alias mkdir='mkdir -p'
+alias mkdir="mkdir -p"
 alias ls=eza
 alias l="eza -l --icons --git -a"
 alias lh="eza -Alh --icons"
