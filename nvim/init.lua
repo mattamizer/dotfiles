@@ -12,9 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- This has to be set before initializing lazy
-vim.g.mapleader = " "
-
 -- Initialize lazy with dynamic loading of anything in the plugins directory
 require("lazy").setup({
 	spec = {
@@ -25,9 +22,11 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.dap.nlua" },
 		{ import = "lazyvim.plugins.extras.formatting.black" },
 		{ import = "lazyvim.plugins.extras.formatting.prettier" },
+		{ import = "lazyvim.plugins.extras.lang.docker" },
 		{ import = "lazyvim.plugins.extras.lang.json" },
+		{ import = "lazyvim.plugins.extras.lang.markdown" },
 		{ import = "lazyvim.plugins.extras.lang.python" },
-		{ import = "lazyvim.plugins.extras.lang.tailwind" },
+		{ import = "lazyvim.plugins.extras.lang.terraform" },
 		{ import = "lazyvim.plugins.extras.lang.yaml" },
 		{ import = "lazyvim.plugins.extras.linting.eslint" },
 		{ import = "lazyvim.plugins.extras.test.core" },
