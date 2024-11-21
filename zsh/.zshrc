@@ -66,6 +66,9 @@ compinit -C
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+# assumes the virtualenv plugin is installed
+# https://github.com/pyenv/pyenv-virtualenv?tab=readme-ov-file#installing-with-homebrew-for-macos-users
+eval "$(pyenv virtualenv-init -)"
 
 # Starship (https://starship.rs/) shell prompt
 # Check that the function `starship_zle-keymap-select()` is defined.
