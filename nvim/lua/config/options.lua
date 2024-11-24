@@ -10,3 +10,6 @@ vim.cmd([[ set termguicolors ]])
 vim.wo.number = true
 
 vim.g.python3_host_prog = "/Users/mmorrissey/.pyenv/versions/neovim/bin/python"
+
+-- Enable this option to avoid conflicts with Prettier.
+vim.g.lazyvim_prettier_needs_config = true
