@@ -1,17 +1,21 @@
-return {{
-  "stevearc/conform.nvim",
-  optional = true,
-  --@param opts ConformOpts
-  opts = function(_, opts)
-    local supported = opts.formatters_by_ft or {}
-    for _, ft in ipairs(supported) do
-      opts.formatters_by_ft[ft] = opts.formatters_by_ft[ft] or {}
-      table.insert(opts.formatters_by_ft[ft], "biome")
-    end
-
-    opts.formatters = opts.formatters or {}
-    opts.formatters.biome = {
-      require_cwd = true,
-    }
-  end,
-}}
+return {
+	"stevearc/conform.nvim",
+	opts = function()
+		--@type conform.setupOpts
+		local opts = {
+			default_format_opts = {
+				timeout_ms = 3000,
+				async = false, -- not recommended to change
+				quiet = false, -- not recommended to change
+				lsp_format = "fallback", -- not recommended to change
+			},
+			formatters_by_ft = {
+				lua = { "stylua" },
+				markdown = { "prettier", "markdownlint-cli2" },
+				python = { "black" },
+				sh = { "shfmt" },
+			},
+		}
+		return opts
+	end,
+}
