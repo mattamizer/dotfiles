@@ -87,3 +87,6 @@ type starship_zle-keymap-select >/dev/null || \
 
 # zoxide (https://https://github.com/ajeetdsouza/zoxide/tree/main)
 eval "$(zoxide init zsh)"
+
+# Created by `pipx` on 2024-11-26 21:27:58
+export PATH="$PATH:/Users/mmorrissey/.local/bin"
