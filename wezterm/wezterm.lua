@@ -1,8 +1,12 @@
 local wezterm = require("wezterm")
 -- Plugins
 wezterm.plugin.update_all()
--- Sessionizer
-local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
+-- Workspace Switcher
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+workspace_switcher.zoxide_path = "/opt/homebrew/bin/zoxide"
+-- Ressurect
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
+resurrect.periodic_save()
 -- Tab Bar
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 -- Wezterm config object
@@ -74,6 +78,17 @@ config = {
 			key = "m",
 			action = wezterm.action.TogglePaneZoomState,
 		},
+		-- workspace switcher config
+		{
+			key = "s",
+			mods = "LEADER",
+			action = workspace_switcher.switch_workspace(),
+		},
+		{
+			key = "S",
+			mods = "LEADER",
+			action = workspace_switcher.switch_to_prev_workspace(),
+		},
 		-- rotate panes
 		{
 			mods = "LEADER",
@@ -131,15 +146,24 @@ config = {
 	end),
 }
 
--- Sessionizer configuration
-sessionizer.apply_to_config(config)
-sessionizer.config.paths = {
-	os.getenv("HOME") .. "/dotfiles",
-	os.getenv("HOME") .. "/code",
-	os.getenv("HOME") .. "/gocode",
-	os.getenv("HOME") .. "/Obsidian/Mattvault",
-}
-sessionizer.config.command_options.fd_path = "/opt/homebrew/bin/fd"
+-- loads the state whenever I create a new workspace
+wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, label)
+	local workspace_state = resurrect.workspace_state
+
+	workspace_state.restore_workspace(resurrect.load_state(label, "workspace"), {
+		window = window,
+		relative = true,
+		restore_text = true,
+		on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+	})
+end)
+
+-- Saves the state whenever I select a workspace
+wezterm.on("smart_workspace_switcher.workspace_switcher.selected", function()
+	local workspace_state = resurrect.workspace_state
+	resurrect.save_state(workspace_state.get_workspace_state())
+end)
+
 -- Tabline configuration
 tabline.setup({
 	options = {
