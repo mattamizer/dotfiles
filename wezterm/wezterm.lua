@@ -3,12 +3,9 @@ local wezterm = require("wezterm")
 local config = {
 	color_scheme = "Catppuccin Macchiato",
 	font = wezterm.font("Iosevka Nerd Font"),
-	enable_tab_bar = true,
-	use_fancy_tab_bar = false,
 	font_size = 16.0,
 	leader = { key = "a", mods = "CTRL" },
 	macos_window_background_blur = 30,
-	native_macos_fullscreen_mode = true,
 	window_background_opacity = 1.0,
 	window_decorations = "RESIZE",
 }
@@ -48,6 +45,7 @@ tabline.setup({
 	},
 	extensions = { "smart_workspace_switcher", "resurrect" },
 })
+tabline.apply_to_config(config)
 
 -- Ressurect
 local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")

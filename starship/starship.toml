@@ -1,3 +1,8 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+# pyenv takes a while
+command_timeout = 3000
+
 add_newline = false
 palette = "catppuccin_macchiato"
 # Left prompt with important information
@@ -11,65 +16,41 @@ $git_status\
 $git_metrics\
 $fill\
 $nodejs\
-$cmd_duration $jobs $time\
+$cmd_duration $jobs\
 $line_break\
 $character"""
 
 # move the rest of the prompt to the right
 right_format = """$all"""
 
-# Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
-
-# pyenv takes a while
-command_timeout = 3000
-
 [nodejs]
-format = "[$symbol($version )]($style)"
-
-[fill]
-symbol = " "
+format = 'via [🤖 $version](bold green)'
 
 [directory]
 read_only = " "
 truncation_length = 4
 truncate_to_repo = false
 
-[character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vicmd_symbol = "[❮](green)"
-
 [git_branch]
 symbol = " "
-format = "[$symbol$branch]($style) "
 
 [jobs]
 symbol = ""
-number_threshold = 1
-format = "[$symbol]($style)"
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
-
-[git_state]
-format = '[\($state( $progress_current/$progress_total)\)]($style) '
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
 
 [git_metrics]
 disabled = false
 
 [cmd_duration]
-format = "[$duration]($style)"
-
-[memory_usage]
-symbol = " "
+min_time = 500
+format = "took [$duration]($style)"
 
 [rust]
 symbol = " "
-
-[time]
-disabled = false
-format = "[$time]($style)"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
@@ -86,9 +67,6 @@ detect_files = ['Dockerfile']
 format = '[$context(\[$namespace\])]($style) '
 [kubernetes.context_aliases]
 'arn:aws:eks:us-west-2:577926974532:cluster/gal-kub-demo-cluster' = 'gal'
-
-[docker_context]
-disabled = true
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
