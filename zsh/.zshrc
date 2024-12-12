@@ -22,22 +22,46 @@ export PATH="/usr/local/go/bin:$PATH"
 
 # Custom functions
 branch() { git checkout ${1:-$(git branch | grep -v "^* "| pick)} ;}
-code() { cd ~/Code; cd ${1:-$(eza -a ~/code | pick)} ;}
-gocode() {
-  cd $GOPATH/src/${1:-$(
-  find $GOPATH/src -type d -maxdepth 3 | \
-    grep "src/.*/.*/.*$" | \
-    cut -f 6-9 -d "/" | \
-    pick
-  )}
-}
-cx() { cd "$@" && l; }
 
 # Add fuzzy finding
 eval "$(fzf --zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+--color=selected-bg:#494d64 \
+--multi"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 
-# Docker using Colima
-export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
 
 # Syntax Highlighting and Autosuggestions
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -56,7 +80,7 @@ fi
 
 autoload -Uz compinit
 
-for dump in $HOME/.config/zsh/.zcompdump(N.mh+24); do
+for dump in $XDG_CONFIG_HOME/zsh/.zcompdump(N.mh+24); do
     compinit
 done
 
@@ -71,19 +95,15 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # NVM configuration
-export NVM_DIR="$HOME/.config/nvm"
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Starship (https://starship.rs/) shell prompt
 # Check that the function `starship_zle-keymap-select()` is defined.
 # xref: https://github.com/starship/starship/issues/3418
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
-type starship_zle-keymap-select >/dev/null || \
-  {
-    echo "Load starship"
-    eval "$(starship init zsh)"
-  }
+eval "$(starship init zsh)"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # zoxide (https://https://github.com/ajeetdsouza/zoxide/tree/main)
 eval "$(zoxide init zsh)"
