@@ -71,6 +71,6 @@ local function tab_switch_keys(key_table, modifier)
 	})
 end
 
-tab_switch_keys(keys, "CTRL")
+tab_switch_keys(keys, "ALT")
 
 return keys

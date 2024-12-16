@@ -71,6 +71,7 @@ wezterm.on("smart_workspace_switcher.workspace_switcher.selected", function()
 	local workspace_state = resurrect.workspace_state
 	resurrect.save_state(workspace_state.get_workspace_state())
 end)
+workspace_switcher.apply_to_config(config)
 
 -- Smart Splits
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
