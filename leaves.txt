@@ -11,6 +11,8 @@ docker-compose
 docker-credential-helper
 docutils
 eza
+fd
+felixkratz/formulae/sketchybar
 flake8
 fonttools
 fzf
@@ -22,9 +24,11 @@ hashicorp/tap/terraform-ls
 httpie
 jq
 lazygit
+luarocks
 marksman
 neovim
 node
+nowplaying-cli
 openssl@1.1
 pick
 pipx
@@ -39,6 +43,7 @@ rust
 shellcheck
 starship
 stow
+switchaudio-osx
 tcptraceroute
 telnet
 terraform-docs

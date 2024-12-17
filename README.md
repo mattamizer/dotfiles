@@ -15,7 +15,10 @@ Once that's done, do the following.
 cd dotfiles
 stow .
 xargs brew install < leaves.txt
+# We need this for sketchybar to render app icons, at least for now
+curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.28/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
 sh scripts/git.sh
+brew services start sketchybar
 ```
 
 ## Migrating to a new machine
