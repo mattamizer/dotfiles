@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 local config = {
 	color_scheme = "Catppuccin Macchiato",
-	font = wezterm.font("Iosevka Nerd Font"),
+	font = wezterm.font("IosevkaTerm Nerd Font"),
 	font_size = 16.0,
 	leader = { key = "a", mods = "CTRL" },
 	macos_window_background_blur = 30,
