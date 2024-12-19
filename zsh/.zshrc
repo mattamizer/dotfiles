@@ -60,6 +60,11 @@ _fzf_comprun() {
   esac
 }
 
+# Search for a branch using fzf-git, then check it out
+branch() {
+  _fzf_git_branches | xargs git checkout
+}
+
 # Syntax Highlighting and Autosuggestions
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey '^w' autosuggest-execute
