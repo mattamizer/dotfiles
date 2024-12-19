@@ -30,6 +30,3 @@ alias sync_upstream='git checkout main && git fetch upstream && git rebase upstr
 
 #OS X
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-
-#Autobahn jump scp
-alias jumpscp="jump -c >/dev/null && scp -o 'ProxyCommand ssh -qx svcAutobahn@jump.autobahn.comcast.com -W %h:%p'"
