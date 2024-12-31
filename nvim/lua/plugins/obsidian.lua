@@ -14,10 +14,6 @@ return {
 				path = "~/Obsidian/Mattvault",
 			},
 		},
-		completion = {
-			nvim_cmp = true,
-			min_chars = 2,
-		},
 		picker = {
 			-- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
 			name = "telescope.nvim",
