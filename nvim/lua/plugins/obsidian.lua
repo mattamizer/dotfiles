@@ -18,7 +18,8 @@ return {
 			-- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
 			name = "telescope.nvim",
 		},
-		new_notes_location = "current_dir",
+		notes_subdir = "0. Inbox",
+		new_notes_location = "notes_subdir",
 		wiki_link_func = function(opts)
 			if opts.id == nil then
 				return string.format("[[%s]]", opts.label)
@@ -28,7 +29,6 @@ return {
 				return string.format("[[%s]]", opts.id)
 			end
 		end,
-
 		mappings = {
 			-- "Obsidian follow"
 			["<leader>of"] = {
@@ -46,7 +46,10 @@ return {
 			},
 		},
 		note_frontmatter_func = function(note)
-			-- This is equivalent to the default frontmatter function.
+			if note.title then
+				note:add_alias(note.title)
+			end
+
 			local out = { id = note.id, aliases = note.aliases, tags = note.tags, area = "", project = "" }
 
 			-- `note.metadata` contains any manually added fields in the frontmatter.
@@ -79,6 +82,30 @@ return {
 			date_format = "%Y-%m-%d-%a",
 			time_format = "%H:%M",
 			tags = "",
+		},
+		attachments = {
+			-- The default folder to place images in via `:ObsidianPasteImg`.
+			-- If this is a relative path it will be interpreted as relative to the vault root.
+			-- You can always override this per image by passing a full path to the command instead of just a filename.
+			img_folder = "assets/imgs", -- This is the default
+
+			-- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
+			---@return string
+			img_name_func = function()
+				-- Prefix image names with timestamp.
+				return string.format("%s-", os.time())
+			end,
+
+			-- A function that determines the text to insert in the note when pasting an image.
+			-- It takes two arguments, the `obsidian.Client` and an `obsidian.Path` to the image file.
+			-- This is the default implementation.
+			---@param client obsidian.Client
+			---@param path obsidian.Path the absolute path to the image file
+			---@return string
+			img_text_func = function(client, path)
+				path = client:vault_relative_path(path) or path
+				return string.format("![%s](%s)", path.name, path)
+			end,
 		},
 	},
 	config = function(_, opts)

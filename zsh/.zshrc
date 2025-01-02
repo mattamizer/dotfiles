@@ -8,6 +8,10 @@ bindkey -M vicmd '^r' history-incremental-search-backward
 # Set the default editor to Neovim
 export EDITOR="nvim"
 
+# Setup docker options for Colima
+export COLIMA_HOME=$XDG_CONFIG_HOME/colima
+export DOCKER_HOST="unix://$COLIMA_HOME/default/docker.sock"
+
 # Mess with PATH
 export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin:$GOPATH/src
