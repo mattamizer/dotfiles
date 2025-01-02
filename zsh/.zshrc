@@ -111,7 +111,7 @@ eval "$(starship init zsh)"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # zoxide (https://https://github.com/ajeetdsouza/zoxide/tree/main)
-eval "$(zoxide init zsh --cmd cd)"
+eval "$(zoxide init zsh)"
 
 # Created by `pipx` on 2024-11-26 21:27:58
 export PATH="$PATH:/Users/mmorrissey/.local/bin"
