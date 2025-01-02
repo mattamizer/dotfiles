@@ -24,9 +24,10 @@ export PATH="/usr/local/go/bin:$PATH"
 # wezterm zsh integration
 [[ -f ~/dotfiles/scripts/wezterm.sh ]] && source ~/dotfiles/scripts/wezterm.sh
 
-# Add fuzzy finding
+# Add fuzzy finding via FZF
 eval "$(fzf --zsh)"
 [ -f ~/dotfiles/scripts/fzf-git.sh ] && source ~/dotfiles/scripts/fzf-git.sh
+# Catppuccin Macchiato
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
@@ -106,13 +107,11 @@ export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Starship (https://starship.rs/) shell prompt
-# Check that the function `starship_zle-keymap-select()` is defined.
-# xref: https://github.com/starship/starship/issues/3418
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # zoxide (https://https://github.com/ajeetdsouza/zoxide/tree/main)
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 # Created by `pipx` on 2024-11-26 21:27:58
 export PATH="$PATH:/Users/mmorrissey/.local/bin"
