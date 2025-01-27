@@ -85,6 +85,7 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 fi
 
+FPATH=$FPATH:$HOME/.zfunc/
 autoload -Uz compinit
 
 for dump in $XDG_CONFIG_HOME/zsh/.zcompdump(N.mh+24); do

@@ -1,20 +1,18 @@
 return {
 	"stevearc/conform.nvim",
 	opts = function()
-		--@type conform.setupOpts
 		local opts = {
 			default_format_opts = {
-				timeout_ms = 3000,
-				async = false, -- not recommended to change
-				quiet = false, -- not recommended to change
-				lsp_format = "fallback", -- not recommended to change
+				timemout_ms = 10000,
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				markdown = { "prettier", "markdownlint-cli2" },
+				markdown = { "mdformat", "markdownlint-cli2", "prettier" },
+				markdown_inline = { "mdformat", "markdownlint-cli2", "prettier" },
 				python = { "black" },
 				sh = { "shfmt" },
 			},
+			log_level = vim.log.levels.DEBUG,
 		}
 		return opts
 	end,

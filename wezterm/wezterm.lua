@@ -54,6 +54,7 @@ resurrect.periodic_save()
 -- Workspace Switcher
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 workspace_switcher.zoxide_path = "/opt/homebrew/bin/zoxide"
+workspace_switcher.switch_workspace({ extra_args = " | rg -Fxf ~/code" })
 -- loads the state whenever I create a new workspace
 wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, label)
 	local workspace_state = resurrect.workspace_state
