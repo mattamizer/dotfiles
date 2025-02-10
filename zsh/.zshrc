@@ -71,6 +71,7 @@ branch() {
 }
 
 # Syntax Highlighting and Autosuggestions
+source $XDG_CONFIG_HOME/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey '^w' autosuggest-execute
 bindkey '^e' autosuggest-accept
