@@ -1,31 +1,23 @@
-# Unix
-alias tlf="tail -f"
+# General
 alias ln='ln -v'
 alias mkdir="mkdir -p"
 alias ls=eza
+alias la=tree
 alias l="eza -l --icons --git -a"
 alias lh="eza -Alh --icons"
 alias lt="eza --tree --level=2 --long --icons --git"
-alias -g G="| grep"
-alias -g L="| less"
-alias -g W="| wc -l"
-alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
 alias cat=bat
-
-# git
-alias ggrep="git grep --break --heading -n"
 
 # Neovim
 alias vi="nvim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
 
-alias reload!='source ~/.config/zsh/.zshrc'
-
+# Git
+alias ggrep="git grep --break --heading -n"
 alias gtidy='git branch --merged | egrep -v "(^\*|main|develop)" | xargs git branch -d'
-
 alias sync_upstream='git checkout main && git fetch upstream && git rebase upstream/main && git push --force-with-lease origin main'
 
 #OS X

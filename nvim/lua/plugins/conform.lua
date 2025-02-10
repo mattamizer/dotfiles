@@ -11,6 +11,10 @@ return {
 				markdown_inline = { "mdformat", "markdownlint-cli2", "prettier" },
 				python = { "black" },
 				sh = { "shfmt" },
+				hcl = { "packer_fmt" },
+				terraform = { "terraform_fmt" },
+				tf = { "terraform_fmt" },
+				["terraform-vars"] = { "terraform_fmt" },
 			},
 			log_level = vim.log.levels.DEBUG,
 		}
