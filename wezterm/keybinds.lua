@@ -14,6 +14,11 @@ local keys = {
 		end),
 	},
 	{
+		key = "r",
+		mods = "LEADER",
+		action = act.ReloadConfiguration,
+	},
+	{
 		key = "f",
 		mods = "LEADER",
 		action = act.ToggleFullScreen,
