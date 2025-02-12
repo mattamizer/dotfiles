@@ -50,35 +50,29 @@ tabline.setup({
 	options = {
 		theme = "Catppuccin Macchiato",
 	},
-	extensions = { "smart_workspace_switcher", "resurrect" },
+	-- extensions = { "smart_workspace_switcher", "resurrect" },
 })
 tabline.apply_to_config(config)
 
--- Ressurect
-local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
-resurrect.periodic_save()
-
--- Workspace Switcher
-local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
-workspace_switcher.zoxide_path = "/opt/homebrew/bin/zoxide"
--- loads the state whenever I create a new workspace
-wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, label)
-	local workspace_state = resurrect.workspace_state
-
-	workspace_state.restore_workspace(resurrect.load_state(label, "workspace"), {
-		window = window,
-		relative = true,
-		restore_text = true,
-		on_pane_restore = resurrect.tab_state.default_on_pane_restore,
-	})
-end)
-
--- Saves the state whenever I select a workspace
-wezterm.on("smart_workspace_switcher.workspace_switcher.selected", function()
-	local workspace_state = resurrect.workspace_state
-	resurrect.save_state(workspace_state.get_workspace_state())
-end)
-workspace_switcher.apply_to_config(config)
+-- Sessionizer
+local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
+sessionizer.config = {
+	paths = {
+		"/Users/mmorrissey/code",
+		"/Users/mmorrissey/dotfiles/",
+	},
+	command_options = {
+		fd_path = "/opt/homebrew/bin/fd",
+	},
+}
+sessionizer.apply_to_config(config, true)
+config.keys = {
+	{
+		key = "s",
+		mods = "LEADER",
+		action = sessionizer.show,
+	},
+}
 
 -- Smart Splits
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
