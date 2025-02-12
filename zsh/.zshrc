@@ -34,8 +34,6 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
 --color=selected-bg:#494d64 \
 --multi"
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
