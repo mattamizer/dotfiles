@@ -2,9 +2,6 @@ return {
 	"stevearc/conform.nvim",
 	opts = function()
 		local opts = {
-			default_format_opts = {
-				timemout_ms = 10000,
-			},
 			formatters_by_ft = {
 				lua = { "stylua" },
 				markdown = { "mdformat", "markdownlint-cli2", "prettier" },
@@ -16,7 +13,11 @@ return {
 				tf = { "terraform_fmt" },
 				["terraform-vars"] = { "terraform_fmt" },
 			},
-			log_level = vim.log.levels.DEBUG,
+			formatters = {
+				prettier = {
+					prepend_args = { "--prose-wrap", "always" },
+				},
+			},
 		}
 		return opts
 	end,
