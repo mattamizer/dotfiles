@@ -9,6 +9,7 @@ alias lt="eza --tree --level=2 --long --icons --git"
 alias e="$EDITOR"
 alias v="$VISUAL"
 alias cat=bat
+alias tf=terraform
 
 # Neovim
 alias vi="nvim"
