@@ -18,6 +18,9 @@ export PATH=$PATH:$GOPATH/bin:$GOPATH/src
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 
+# Homebrew bundle file
+export HOME_BREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"
+
 # aliases
 [[ -f ~/.config/.aliases ]] && source ~/.config/.aliases
 
