@@ -1,5 +1,3 @@
-# Turn on case sensitivity, which is apparently a thing in OS X
-CASE_SENSITIVE=true
 # Use VI keybinds, but keep ^r for backwards search
 set -o vi
 bindkey -M viins '^r' history-incremental-search-backward
