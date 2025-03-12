@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 local config = {}
 
@@ -39,8 +40,35 @@ wezterm.on("user-var-changed", function(window, pane, name, value)
 	window:set_config_overrides(overrides)
 end)
 
-config.keys = require("keybinds")
-config.mouse_bindings = require("mousebinds")
+-- Keybindings
+config.keys = {
+	{
+		key = "f",
+		mods = "LEADER",
+		action = act.ToggleFullScreen,
+	},
+	{
+		mods = "LEADER",
+		key = "-",
+		action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "LEADER",
+		key = "=",
+		action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "LEADER",
+		key = "z",
+		action = act.TogglePaneZoomState,
+	},
+	-- rotate panes
+	{
+		mods = "LEADER",
+		key = "Space",
+		action = act.RotatePanes("Clockwise"),
+	},
+}
 
 -- Plugins
 wezterm.plugin.update_all()
