@@ -25,9 +25,10 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.ai.copilot-chat" },
 		{ import = "lazyvim.plugins.extras.coding.mini-comment" },
 		{ import = "lazyvim.plugins.extras.coding.mini-surround" },
-		{ import = "lazyvim.plugins.extras.editor.navic" },
 		{ import = "lazyvim.plugins.extras.dap.core" },
 		{ import = "lazyvim.plugins.extras.dap.nlua" },
+		{ import = "lazyvim.plugins.extras.editor.refactoring" },
+		{ import = "lazyvim.plugins.extras.editor.navic" },
 		{ import = "lazyvim.plugins.extras.formatting.black" },
 		{ import = "lazyvim.plugins.extras.formatting.prettier" },
 		{ import = "lazyvim.plugins.extras.lang.docker" },
@@ -52,6 +53,7 @@ require("lazy").setup({
 		version = false, -- always use the latest git commit
 		-- version = "*", -- try installing the latest stable version for plugins that support semver
 	},
+	install = { colorscheme = { "catppuccin", "macchiato" } },
 	checker = { enabled = true, notify = false }, -- automatically check for plugin updates
 	performance = {
 		rtp = {
