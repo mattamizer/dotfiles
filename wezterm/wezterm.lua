@@ -9,7 +9,7 @@ end
 
 config = {
 	color_scheme = "Catppuccin Macchiato",
-	default_workspace = "~/code",
+	default_workspace = "~/dotfiles",
 	font = wezterm.font("IosevkaTerm Nerd Font"),
 	font_size = 16.0,
 	leader = { key = "a", mods = "CTRL" },
