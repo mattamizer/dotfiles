@@ -88,6 +88,7 @@ sessionizer.config = {
 	paths = {
 		"/Users/mmorrissey/code",
 		"/Users/mmorrissey/dotfiles/",
+		"/Users/mmorrissey/Obsidian/",
 	},
 	command_options = {
 		fd_path = "/opt/homebrew/bin/fd",
