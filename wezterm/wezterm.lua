@@ -78,30 +78,25 @@ tabline.setup({
 	options = {
 		theme = "Catppuccin Macchiato",
 	},
-	-- extensions = { "smart_workspace_switcher", "resurrect" },
 })
 tabline.apply_to_config(config)
 
 -- Sessionizer
 local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
-sessionizer.config = {
-	paths = {
-		"/Users/mmorrissey/code",
-		"/Users/mmorrissey/dotfiles/",
-		"/Users/mmorrissey/Obsidian/",
-	},
-	command_options = {
-		fd_path = "/opt/homebrew/bin/fd",
-	},
+local schema = {
+	wezterm.home_dir .. "/code",
+	wezterm.home_dir .. "/dotfiles",
+	wezterm.home_dir .. "/Obsidian/MattVault",
+	sessionizer.FdSearch({ wezterm.home_dir .. "/code", fd_path = "/opt/homebrew/bin/fd" }),
+	processing = sessionizer.for_each_entry(function(entry)
+		entry.label = entry.label:gsub(wezterm.home_dir, "~")
+	end),
 }
-sessionizer.apply_to_config(config, true)
-config.keys = {
-	{
-		key = "s",
-		mods = "LEADER",
-		action = sessionizer.show,
-	},
-}
+table.insert(config.keys, {
+	key = "s",
+	mods = "LEADER",
+	action = sessionizer.show(schema),
+})
 
 -- Smart Splits
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
