@@ -81,8 +81,6 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 fi
 
-FPATH=$FPATH:$HOME/.zfunc/
-
 autoload -Uz compinit
 for dump in $XDG_CONFIG_HOME/zsh/.zcompdump(N.mh+24); do
   compinit
@@ -103,9 +101,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Starship (https://starship.rs/) shell prompt
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-
-# zoxide (https://https://github.com/ajeetdsouza/zoxide/tree/main)
-eval "$(zoxide init zsh)"
 
 # Created by `pipx` on 2024-11-26 21:27:58
 export PATH="$PATH:/Users/mmorrissey/.local/bin"
