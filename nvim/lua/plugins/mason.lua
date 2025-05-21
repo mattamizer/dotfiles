@@ -4,7 +4,6 @@ return {
 		ensure_installed = {
 			"bash-debug-adapter",
 			"bash-language-server",
-			"black",
 			"debugpy",
 			"dockerfile-language-server",
 			"eslint-lsp",
