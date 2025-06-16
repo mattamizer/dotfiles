@@ -20,7 +20,6 @@ return {
 			"ruff",
 			"shellcheck",
 			"shfmt",
-			-- "snyk-ls",
 			"stylua",
 			"taplo",
 			"terraform-ls",
