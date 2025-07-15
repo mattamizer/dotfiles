@@ -81,21 +81,16 @@ tabline.setup({
 })
 tabline.apply_to_config(config)
 
--- Sessionizer
-local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
-local schema = {
-	wezterm.home_dir .. "/code",
-	wezterm.home_dir .. "/dotfiles",
-	wezterm.home_dir .. "/Obsidian/MattVault",
-	sessionizer.FdSearch({ wezterm.home_dir .. "/code", fd_path = "/opt/homebrew/bin/fd" }),
-	processing = sessionizer.for_each_entry(function(entry)
-		entry.label = entry.label:gsub(wezterm.home_dir, "~")
-	end),
-}
-table.insert(config.keys, {
-	key = "s",
-	mods = "LEADER",
-	action = sessionizer.show(schema),
+-- -- Sessionizer
+local wpr = wezterm.plugin.require("https://github.com/vieitesss/workspacesionizer.wezterm")
+wpr.apply_to_config(config, {
+	paths = { "~/code", "~/dotfiles", "~/Obsidian" },
+	git_repos = false,
+	show = "base",
+	binding = {
+		key = "s",
+		mods = "LEADER",
+	},
 })
 
 -- Smart Splits
