@@ -15,6 +15,9 @@ export PATH="/usr/local/go/bin:$PATH"
 # Homebrew bundle file
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"
 
+# LocalStack Volume Directory
+export LOCALSTACK_VOLUME_DIR="$TMPDIR/localstack/volumes"
+
 # aliases
 [[ -f ~/.config/.aliases ]] && source ~/.config/.aliases
 
@@ -81,12 +84,14 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 fi
 
+autoload bashcompinit && bashcompinit
 autoload -Uz compinit
 for dump in $XDG_CONFIG_HOME/zsh/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
 
+complete -C "aws_completer" aws
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
