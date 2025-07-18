@@ -6,6 +6,25 @@ return {
 		"ravitemer/mcphub.nvim",
 	},
 	opts = {
+		adapters = {
+			openai = function()
+				return require("codecompanion.adapters").extend("openai", {
+					opts = {
+						stream = true,
+					},
+					env = {
+						api_key = "cmd:op read op://Relay Network/OpenAI_Key/credential --no-newline",
+					},
+					schema = {
+						model = {
+							default = function()
+								return "gpt-o3"
+							end,
+						},
+					},
+				})
+			end,
+		},
 		extensions = {
 			mcphub = {
 				callback = "mcphub.extensions.codecompanion",
