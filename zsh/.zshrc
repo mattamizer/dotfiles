@@ -11,7 +11,8 @@ export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin:$GOPATH/src
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
-
+# ASDF tool version management
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # Homebrew bundle file
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"
 
@@ -79,29 +80,16 @@ bindkey '^k' up-line-or-search
 bindkey '^j' down-line-or-search
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# More autocomplete
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+if [ ! -d "$XDG_CONFIG_HOME/zsh/.zfunc" ]; then
+  mkdir -p "$XDG_CONFIG_HOME/zsh/.zfunc"
 fi
 
+FPATH="$XDG_CONFIG_HOME/zsh/.zfunc:$FPATH"
+
 autoload bashcompinit && bashcompinit
-autoload -Uz compinit
-for dump in $XDG_CONFIG_HOME/zsh/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
+autoload -Uz compinit && compinit
 
 complete -C "aws_completer" aws
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# NVM configuration
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Starship (https://starship.rs/) shell prompt
 eval "$(starship init zsh)"

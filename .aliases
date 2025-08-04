@@ -17,6 +17,3 @@ alias vimdiff="nvim -d"
 alias ggrep="git grep --break --heading -n"
 alias gtidy='git branch --merged | egrep -v "(^\*|main|develop)" | xargs git branch -d'
 alias sync_upstream='git checkout main && git fetch upstream && git rebase upstream/main && git push --force-with-lease origin main'
-
-#OS X
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
