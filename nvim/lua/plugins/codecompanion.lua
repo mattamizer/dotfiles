@@ -13,12 +13,12 @@ return {
 						stream = true,
 					},
 					env = {
-						api_key = "cmd:op read op://Relay Network/OpenAI_Key/credential --no-newline",
+						api_key = "cmd:op read op://Employee/OpenAIKey/credential --no-newline",
 					},
 					schema = {
 						model = {
 							default = function()
-								return "gpt-o3"
+								return "gpt-4o"
 							end,
 						},
 					},
