@@ -27,7 +27,9 @@ return {
 					-- Configuration from https://github.com/snyk/snyk-ls#configuration-1
 					init_options = {
 						activateSnykCode = "true",
-						cliPath = "/opt/homebrew/bin/snyk",
+						organization = "Relay Network",
+						token = "cmd:op read op://Employee/SnykToken/credential --no-newline",
+						path = "/opt/homebrew/bin/snyk",
 					},
 				},
 			},
