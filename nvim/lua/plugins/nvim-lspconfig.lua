@@ -32,6 +32,7 @@ return {
 					authenticationMethod = "oauth",
 					automaticAuthentication = "true",
 					cliPath = "/opt/homebrew/bin/snyk",
+					manageBinariesAutomatically = "false",
 					organization = "relay-network",
 				},
 			},
