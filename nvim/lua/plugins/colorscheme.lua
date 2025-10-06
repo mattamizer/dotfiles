@@ -7,8 +7,7 @@ return {
 		lazy = false, -- We want the colorscheme to load immediately when starting Neovim
 		priority = 1000, -- Load the colorscheme before other non-lazy-loaded plugins
 		opts = {
-			--   -- Replace this with your scheme-specific settings or remove to use the defaults
-			-- transparent = true,
+			-- Replace this with your scheme-specific settings or remove to use the defaults
 			flavour = "macchiato", -- "latte, frappe, macchiato, mocha"
 			integrations = {
 				aerial = true,
@@ -49,13 +48,6 @@ return {
 				nvimtree = true,
 				rainbow_delimiters = true,
 			},
-			opts = function(_, opts)
-				local module = require("catppuccin.groups.integrations.bufferline")
-				if module then
-					module.get = module.get_theme
-				end
-				return opts
-			end,
 		},
 		specs = {
 			{
@@ -63,7 +55,7 @@ return {
 				optional = true,
 				opts = function(_, opts)
 					if (vim.g.colors_name or ""):find("catppuccin") then
-						opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
+						opts.highlights = require("catppuccin.special.bufferline").get_theme()
 					end
 				end,
 			},
