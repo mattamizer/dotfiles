@@ -8,34 +8,35 @@ return {
 	opts = {
 		servers = {
 			eslint = {},
-			snyk_ls = {
-				mason = false,
-				cmd = { "/opt/homebrew/bin/snyk", "language-server" },
-				root_markers = { ".git", ".snyk" },
-				filetypes = {
-					"go",
-					"gomod",
-					"javascript",
-					"typescript",
-					"json",
-					"python",
-					"requirements",
-					"helm",
-					"yaml",
-					"terraform",
-					"terraform-vars",
-				},
-				settings = {},
-				-- Configuration from https://github.com/snyk/snyk-ls#configuration-1
-				init_options = {
-					activateSnykCode = "true",
-					authenticationMethod = "oauth",
-					automaticAuthentication = "true",
-					cliPath = "/opt/homebrew/bin/snyk",
-					manageBinariesAutomatically = "false",
-					organization = "relay-network",
-				},
-			},
+			-- Note: Disabled for now as the initializtion return doesn't match the LSP spec
+			-- snyk_ls = {
+			-- 	mason = false,
+			-- 	cmd = { "/opt/homebrew/bin/snyk", "language-server" },
+			-- 	root_markers = { ".git", ".snyk" },
+			-- 	filetypes = {
+			-- 		"go",
+			-- 		"gomod",
+			-- 		"javascript",
+			-- 		"typescript",
+			-- 		"json",
+			-- 		"python",
+			-- 		"requirements",
+			-- 		"helm",
+			-- 		"yaml",
+			-- 		"terraform",
+			-- 		"terraform-vars",
+			-- 	},
+			-- 	settings = {},
+			-- 	-- Configuration from https://github.com/snyk/snyk-ls#configuration-1
+			-- 	init_options = {
+			-- 		activateSnykCode = "true",
+			-- 		authenticationMethod = "oauth",
+			-- 		automaticAuthentication = "true",
+			-- 		cliPath = "/opt/homebrew/bin/snyk",
+			-- 		manageBinariesAutomatically = "false",
+			-- 		organization = "relay-network",
+			-- 	},
+			-- },
 		},
 		setup = {
 			eslint = function()
