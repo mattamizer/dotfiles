@@ -7,7 +7,6 @@ return {
 	},
 	opts = {
 		servers = {
-			eslint = {},
 			-- Note: Disabled for now as the initializtion return doesn't match the LSP spec
 			-- snyk_ls = {
 			-- 	mason = false,
@@ -37,17 +36,6 @@ return {
 			-- 		organization = "relay-network",
 			-- 	},
 			-- },
-		},
-		setup = {
-			eslint = function()
-				require("lazyvim.util").lsp.on_attach(function(client)
-					if client.name == "eslint" then
-						client.server_capabilities.documentFormattingProvider = true
-					elseif client.name == "tsserver" then
-						client.server_capabilities.documentFormattingProvider = false
-					end
-				end)
-			end,
 		},
 	},
 }
