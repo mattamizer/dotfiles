@@ -2,6 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"ravitemer/mcphub.nvim",
+		{ "catppuccin/nvim", name = "catppuccin" },
 	},
 	opts = function(_, opts)
 		opts.sections.lualine_x = {
@@ -32,17 +33,18 @@ return {
 				end,
 				color = function()
 					-- TODO: Figure out how to load the colors from the colorscheme
+					local macchiato = require("catppuccin.palettes").get_palette("macchiato")
 					if not vim.g.loaded_mcphub then
-						return { fg = "#6e738d" } -- Gray for not loaded
+						return { fg = macchiato.overlay0 } -- Gray for not loaded
 					end
 
 					local status = vim.g.mcphub_status or "stopped"
 					if status == "ready" or status == "restarted" then
-						return { fg = "#a6da95" } -- Green for connected
+						return { fg = macchiato.green } -- Green for connected
 					elseif status == "starting" or status == "restarting" then
-						return { fg = "#f5a97f" } -- Orange for connecting
+						return { fg = macchiato.peach } -- Orange for connecting
 					else
-						return { fg = "#ed8796" } -- Red for error/stopped
+						return { fg = macchiato.red } -- Red for error/stopped
 					end
 				end,
 			},
