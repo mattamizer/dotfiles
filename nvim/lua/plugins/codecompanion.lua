@@ -18,7 +18,7 @@ return {
 					schema = {
 						model = {
 							default = function()
-								return "gpt-4o"
+								return "gpt-5"
 							end,
 						},
 					},
@@ -37,5 +37,10 @@ return {
 				},
 			},
 		},
+	},
+	keys = {
+		{ "<leader>at", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle Code Companion Chat", mode = { "n", "v" } },
+		{ "<leader>ac", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion Actions", mode = { "n", "v" } },
+		{ "ga", "<cmd>CodeCompanionChat Add<cr>", desc = "Add to Code Companion Chat", mode = { "v" } },
 	},
 }
