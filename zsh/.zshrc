@@ -26,7 +26,7 @@ export LOCALSTACK_VOLUME_DIR="$TMPDIR/localstack/volumes"
 [[ -f ~/dotfiles/scripts/wezterm.sh ]] && source ~/dotfiles/scripts/wezterm.sh
 
 # Add fuzzy finding via FZF
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 [ -f ~/dotfiles/scripts/fzf-git.sh ] && source ~/dotfiles/scripts/fzf-git.sh
 # Catppuccin Macchiato
 export FZF_DEFAULT_OPTS=" \
