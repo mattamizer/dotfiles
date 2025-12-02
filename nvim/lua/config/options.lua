@@ -19,3 +19,6 @@ vim.g.lazyvim_python_lsp = "pyright"
 
 -- Please stop with the AI nonsense
 vim.g.ai_cmp = false
+
+-- Disable the LSP log until I need it
+vim.lsp.set_log_level("off")
