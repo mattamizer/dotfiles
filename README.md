@@ -13,6 +13,8 @@ Once that's done, do the following.
 
 ```bash
 cd dotfiles
+cp .zshenv ~/.zshenv
+brew install stow
 stow .
 brew bundle install
 sh scripts/git.sh
