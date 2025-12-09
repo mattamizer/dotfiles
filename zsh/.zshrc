@@ -16,9 +16,6 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # Homebrew bundle file
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"
 
-# LocalStack Volume Directory
-export LOCALSTACK_VOLUME_DIR="$TMPDIR/localstack/volumes"
-
 # aliases
 [[ -f ~/.config/.aliases ]] && source ~/.config/.aliases
 
