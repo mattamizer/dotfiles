@@ -13,8 +13,11 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 # ASDF tool version management
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 # Homebrew bundle file
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"
+# Colima config
+export COLIMA_HOME="$XDG_CONFIG_HOME/colima/.colima"
 
 # aliases
 [[ -f ~/.config/.aliases ]] && source ~/.config/.aliases
