@@ -2,4 +2,8 @@ zsh/.zsh_history
 zsh/.zcompdump
 zsh/.zcompcache
 zsh/.zsh_sessions/*
+# Colima has a bunch of stuff we want to ignore
+colima/*.sock
+colima/_lima/*
+colima/**/daemon/**
 .luarc*
