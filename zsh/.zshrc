@@ -13,6 +13,8 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 # ASDF tool version management
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# Add .local to PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # Homebrew bundle file
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"
