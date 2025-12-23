@@ -16,9 +16,8 @@ vim.g.lazyvim_prettier_needs_config = false
 vim.g.lazyvim_python_ruff = "ruff"
 -- Use Pyright
 vim.g.lazyvim_python_lsp = "pyright"
-
--- Please stop with the AI nonsense
-vim.g.ai_cmp = false
+-- Use Snacks.nvim as the picker
+vim.g.lazyvim_picker = "snacks"
 
 -- Disable the LSP log until I need it
 vim.lsp.set_log_level("off")
