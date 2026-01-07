@@ -70,6 +70,15 @@ config.keys = {
 	},
 }
 
+-- Mouse bindings
+config.mouse_bindings = {
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "CTRL",
+		action = wezterm.action.OpenLinkAtMouseCursor,
+	},
+}
+
 -- Plugins
 wezterm.plugin.update_all()
 -- Tabline configuration
