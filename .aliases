@@ -6,7 +6,7 @@ alias ls="eza -l --icons --git -a"
 alias lh="eza -Alh --icons"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias cat=bat
-alias tf=terraform
+alias tf=tofu
 
 # Neovim
 alias vi="nvim"
