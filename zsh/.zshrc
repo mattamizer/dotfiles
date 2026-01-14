@@ -86,17 +86,6 @@ bindkey '^k' up-line-or-search
 bindkey '^j' down-line-or-search
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-if [ ! -d "$XDG_CONFIG_HOME/zsh/.zfunc" ]; then
-  mkdir -p "$XDG_CONFIG_HOME/zsh/.zfunc"
-fi
-
-FPATH="$XDG_CONFIG_HOME/zsh/.zfunc:$FPATH"
-
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
-
-complete -C "aws_completer" aws
-
 # Starship (https://starship.rs/) shell prompt
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
