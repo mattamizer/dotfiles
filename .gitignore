@@ -6,4 +6,6 @@ zsh/.zsh_sessions/*
 colima/*.sock
 colima/_lima/*
 colima/**/daemon/**
+colima/ssh_config
+# Misc
 .luarc*
