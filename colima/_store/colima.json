@@ -1,4 +1,5 @@
 {
   "disk_formatted": true,
-  "disk_runtime": "docker"
+  "disk_runtime": "docker",
+  "ramalama_provisioned": false
 }
