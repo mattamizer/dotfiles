@@ -16,8 +16,6 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # Add .local to PATH
 export PATH="$HOME/.local/bin:$PATH"
 # Add Wezterm binary to PATH
-# See https://wezterm.org/install/macos.html#installing-on-macos for more details
-export PATH="$PATH:/Applications/Wezterm.app/Contents/MacOS"
 export WEZTERM_CONFIG_FILE=$XDG_CONFIG_HOME/wezterm/wezterm.lua
 
 # Homebrew bundle file
