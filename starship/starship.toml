@@ -6,11 +6,6 @@ palette = "catppuccin_macchiato"
 # Left prompt with important information
 format = '$all$fill$cmd_duration$line_break$character'
 
-[aws]
-format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = 'bold blue'
-symbol = "  "
-
 [cmd_duration]
 min_time = 5000
 format = "took [$duration]($style)"
