@@ -14,7 +14,6 @@ git config --global merge.tool diffconflicts
 git config --global mergetool.diffconflicts.cmd "nvim -c DiffConflicts '$MERGED' '$BASE' '$LOCAL' '$REMOTE'"
 git config --global mergetool.diffconflicts.trustExitCode true
 git config --global mergetool.keepBackup false
-git config --global mergetool.keepBackup false
 git config --global color.ui true
 git config --global core.editor "nvim"
 git config --global core.excludesfile "$HOME/.gitignore"
