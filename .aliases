@@ -15,5 +15,5 @@ alias vimdiff="nvim -d"
 
 # Git
 alias ggrep="git grep --break --heading -n"
-alias gtidy='git branch --merged | egrep -v "(^\*|main|develop)" | xargs git branch -d'
+alias gtidy='git branch --merged | grep -Ev "(^\*\+|master|main|dev)" | xargs git branch -d'
 alias sync_upstream='git checkout main && git fetch upstream && git rebase upstream/main && git push --force-with-lease origin main'
