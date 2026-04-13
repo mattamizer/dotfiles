@@ -17,6 +17,8 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 # Add Wezterm binary to PATH
 export WEZTERM_CONFIG_FILE=$XDG_CONFIG_HOME/wezterm/wezterm.lua
+# Set the GPG TTY
+export GPG_TTY=$(tty)
 
 # Homebrew bundle file
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"
