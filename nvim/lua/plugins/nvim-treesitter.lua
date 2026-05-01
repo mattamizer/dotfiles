@@ -14,7 +14,6 @@ return {
 			"go",
 			"javascript",
 			"json",
-			"jsonc",
 			"latex",
 			"lua",
 			"luadoc",

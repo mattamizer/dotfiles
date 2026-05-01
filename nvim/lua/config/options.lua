@@ -9,12 +9,7 @@ vim.cmd([[ set termguicolors ]])
 -- Line numbers
 vim.wo.number = true
 
--- Enable this option to avoid conflicts with Prettier.
-vim.g.lazyvim_prettier_needs_config = false
-
 -- Use Ruff
 vim.g.lazyvim_python_ruff = "ruff"
 -- Use Pyright
 vim.g.lazyvim_python_lsp = "pyright"
--- Use Snacks.nvim as the picker
-vim.g.lazyvim_picker = "snacks"
