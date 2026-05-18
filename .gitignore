@@ -5,7 +5,10 @@ zsh/.zsh_sessions/*
 # Colima has a bunch of stuff we want to ignore
 colima/*.sock
 colima/_lima/*
+colima/_store/
 colima/**/daemon/**
 colima/ssh_config
+# Lazygit
+lazygit/state.yml
 # Misc
 .luarc*

@@ -8,14 +8,13 @@ export EDITOR="nvim"
 
 # Mess with PATH
 export GOPATH=$HOME/gocode
-export PATH=$PATH:$GOPATH/bin:$GOPATH/src
+export PATH=$PATH:$GOPATH/bin
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 # ASDF tool version management
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # Add .local to PATH
 export PATH="$HOME/.local/bin:$PATH"
-# Add Wezterm binary to PATH
 export WEZTERM_CONFIG_FILE=$XDG_CONFIG_HOME/wezterm/wezterm.lua
 # Set the GPG TTY
 export GPG_TTY=$(tty)
@@ -94,14 +93,10 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval $(thefuck --alias)
 
 # Starship (https://starship.rs/) shell prompt
-eval "$(starship init zsh)"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-
-# Created by `pipx` on 2024-11-26 21:27:58
-export PATH="$PATH:/Users/mmorrissey/.local/bin"
+eval "$(starship init zsh)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-. "$HOME/.local/share/../bin/env"

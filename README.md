@@ -13,11 +13,20 @@ Once that's done, do the following.
 
 ```bash
 cd dotfiles
-cp .zshenv ~/.zshenv
+cp zsh/.zshenv ~/.zshenv
 brew install stow
 stow .
 brew bundle install
 sh scripts/git.sh
+```
+
+## Post-setup
+
+Configure git identity (not set by `scripts/git.sh`):
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
 ```
 
 ## Migrating to a new machine
