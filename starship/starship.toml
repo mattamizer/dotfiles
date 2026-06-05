@@ -1,7 +1,6 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = false
 palette = "catppuccin_macchiato"
 # Left prompt with important information
 format = '$all$fill$cmd_duration$line_break$character'
