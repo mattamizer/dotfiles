@@ -74,6 +74,33 @@ branch() {
   _fzf_git_branches | xargs git checkout
 }
 
+gtidy() {
+  echo "=== Deleting merged and squash-merged branches ==="
+
+  # Ensure main is checked out and up to date
+  git checkout main &&
+  git pull &&
+
+  # Loop over all local branches except main
+  for branch in $(git for-each-ref --format='%(refname:short)' --exclude=refs/heads/main refs/heads/); do
+    # Skip if branch does not exist on remote
+    if ! git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+      echo "Skipping $branch (not on remote)"
+      continue
+    fi
+
+    # Delete only if content is fully in main
+    if git diff --quiet "$branch" main; then
+      git branch -D "$branch"
+      echo "Deleted $branch"
+    else
+      echo "Keeping $branch (has unmerged changes)"
+    fi
+  done
+
+  echo "Done"
+}
+
 # Brew installed autocompletions
 autoload -Uz compinit
 compinit
