@@ -1,10 +1,10 @@
 # General
 alias ln='ln -v'
 alias mkdir="mkdir -p"
-alias l="eza -l --icons --git -a"
-alias ls="eza -l --icons --git -a"
-alias lh="eza -Alh --icons"
-alias lt="eza --tree --level=2 --long --icons --git"
+alias l="eza -l --icons=auto --git -a"
+alias ls="eza -l --icons=auto --git -a"
+alias lh="eza -Alh --icons=auto"
+alias lt="eza --tree --level=2 --long --icons=auto --git"
 alias cat=bat
 alias tf=tofu
 
