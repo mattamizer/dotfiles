@@ -1,7 +1,5 @@
-tap "felixkratz/formulae"
-tap "hashicorp/tap"
-tap "nikitabobko/tap"
-tap "terraform-linters/tap"
+tap "hashicorp/tap", trusted: true
+tap "terraform-linters/tap", trusted: true
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Official Amazon AWS command-line interface
@@ -22,6 +20,8 @@ brew "colima"
 brew "coreutils"
 # Reimplementation of ctags(1)
 brew "ctags"
+# Load/unload environment variables based on $PWD
+brew "direnv"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Isolated development environments using Docker
@@ -134,8 +134,6 @@ brew "terraform-docs"
 brew "terraform-ls"
 # Static analysis security scanner for your terraform code
 brew "tfsec"
-# Programmatically correct mistyped console commands
-brew "thefuck"
 # Official tldr client written in Rust
 brew "tlrc"
 # Terminal multiplexer
@@ -178,7 +176,9 @@ cask "terraform-linters/tap/tflint"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
 vscode "anthropic.claude-code"
+vscode "bierner.markdown-mermaid"
 vscode "catppuccin.catppuccin-vsc"
+vscode "davidanson.vscode-markdownlint"
 vscode "hashicorp.terraform"
 npm "@mermaid-js/mermaid-cli"
 npm "markdown-toc"
