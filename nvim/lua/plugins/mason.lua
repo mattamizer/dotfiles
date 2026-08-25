@@ -22,6 +22,7 @@ return {
 			"shfmt",
 			"stylua",
 			"taplo",
+			"tsc",
 			"terraform-ls",
 			"tflint",
 			"yaml-language-server",
