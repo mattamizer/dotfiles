@@ -19,7 +19,6 @@ return {
 			"luadoc",
 			"markdown",
 			"markdown_inline",
-			"norg",
 			"python",
 			"regex",
 			"scss",
