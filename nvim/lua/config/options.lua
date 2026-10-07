@@ -12,4 +12,4 @@ vim.wo.number = true
 -- Use Ruff
 vim.g.lazyvim_python_ruff = "ruff"
 -- Use Pyright
-vim.g.lazyvim_python_lsp = "pyright"
+vim.g.lazyvim_python_lsp = "basedpyright"
