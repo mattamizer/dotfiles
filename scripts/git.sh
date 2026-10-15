@@ -5,7 +5,7 @@ git config --global alias.changelog 'log --no-merges --pretty=format:"%s (%an)"'
 git config --global alias.contributors 'shortlog --summary --email --numbered'
 git config --global alias.edit "'!nvim $(git ls-files -m) -p'"
 git config --global alias.graph 'log --all --date=relative --decorate --graph --oneline'
-git config --global alias.ignore '!gitignoreio() { curl https://www.gitignore.io/api/$@ ;}; gitignoreio'
+git config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
 git config --global alias.yolo 'push --force --no-verify'
 git config --global alias.co 'checkout'
 git config --global alias.cob 'checkout -b'

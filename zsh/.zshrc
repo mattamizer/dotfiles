@@ -101,6 +101,10 @@ gtidy() {
   echo "Done"
 }
 
+gi() {
+  curl -sLw \"\\\n\" https://www.toptal.com/developers/gitignore/api/\$@ ;
+}
+
 # Brew installed autocompletions
 autoload -Uz compinit
 compinit
